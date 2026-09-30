@@ -1,0 +1,42 @@
+prompt: |
+  [ROLE]
+  You are an academic data extraction specialist capable of processing experimental sections from any discipline.
+
+  [TASK]
+  Extract ONLY baseline methods used for comparison from the provided experimental section content, figures, and tables. Organize information in Markdown table format.
+
+  [INPUT]
+  Experimental section content:
+  {section_text}
+
+  [INSTRUCTIONS]
+  ### 1. DATA EXTRACTION
+  - **Baselines**:
+    - Method names, versions, configurations/parameters
+  - **Cross-Reference Handling**:
+    - If text refers to a figure/table (e.g., "See Table 5"), extract baseline-related values from that element
+
+  ### 2. PROCESSING RULES
+  - Normalize method names (e.g., "ResNet-50" not "resnet50")
+  - Replace vague configuration references with exact parameters if derivable
+  - Attribute sources as:
+    - `[Text]`: "Direct quote" (Section X.X)
+    - `[Table]`: Table Y
+    - `[Figure]`: Figure Z
+  - Use "N/A" when unavailable
+  - List undocumented baseline fields under "Missing Evidence"
+
+  ### 3. OUTPUT FORMAT
+  ```markdown
+  ## Baselines
+  | Method | Configuration | Source |
+  |--------|---------------|--------|
+  | [Baseline Name] | [Params/conditions] | [Source] |
+
+  ## Missing Evidence
+  - [Undocumented baseline field 1]
+  - [Undocumented baseline field 2]
+
+schema:
+  - name: experimental_settings-baselines
+    description: The baselines information of experimental settings of a paper

@@ -1,0 +1,71 @@
+prompt: |
+  [ROLE DESCRIPTION]
+  You are an expert in data analysis and academic paper review. Your task is to analyze experimental results from multiple research papers.
+
+  [TASK DESCRIPTION]
+  Summarize the performance rankings of various research methods across multiple papers for a common dataset and evaluation metric. 
+  The goal is to provide a clear summary of how methods rank relative to each other based on their reported performance values,
+   with reasoning for the rankings.
+
+  [INPUT]  
+  - **Baseline Comparisons Sections:** extracted from each paper and each begins with `\section*{{Baseline Comparisons for Paper \paper_id{{XXX}}}}`: {base_comparison_summaries}
+  - **Per-Paper Experimental Configurations:** one for each paper in json format with `"paper_id"` field: {paper_settings}
+  - **Common Experimental Configuration:**: describe the shared settings among the papers in json format: {common_settings}
+
+  [INSTRUCTIONS]
+  Extract performance data from TeX and JSON data.
+
+  For each dataset-metric pair:
+
+  Determine metric direction (higher/lower = better).
+
+  Sort methods by performance within each paper.
+
+  Aggregate rankings across papers using majority voting.
+
+  Document ranking reasoning with paper citations.
+
+  Notes:
+
+  Ensure consistent naming of datasets/metrics/methods.
+
+  Clarify metric direction before ranking.
+
+  Resolve conflicts with explicit reasoning.
+
+  [Output]
+  The output must be a JSON object with the following structure:
+  ```json
+  {{
+    "performance_rankings": {{
+      "DatasetName1": {{
+        "MetricName1": {{
+          "metric_direction": "Higher is Better", // Or "Lower is Better"
+          "ranking": [
+            "MethodA", // Best performing
+            "MethodB",
+            "MethodC"  // Worst performing
+          ],
+          "reasoning": "Aggregated ranking based on majority vote. MethodA ranked 1st in Paper[ID1], Paper[ID3]. MethodB ranked 1st in Paper[ID2] but 2nd/3rd elsewhere..." // Include citations and conflict resolution notes
+        }},
+        "MetricName2": {{
+          "metric_direction": "Lower is Better",
+          "ranking": [
+            "MethodB",
+            "MethodA",
+            "MethodC"
+          ],
+          "reasoning": "..."
+        }}
+        // Add more metrics for this dataset as needed
+      }},
+      "DatasetName2": {{
+        // ... rankings for metrics on DatasetName2 ...
+      }}
+      // Add more datasets as needed
+    }}
+  }}
+
+schema:
+  - name: rank_methods
+    description: ranking experiment results of different methods on a common dataset and a common evaluation metric

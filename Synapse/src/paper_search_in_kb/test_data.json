@@ -1,0 +1,255 @@
+[
+  {
+    "query_id": "1",
+    "query": "Are there any papers titled 'Table Overlap'?",
+    "ground_truth": [
+      "1",
+      "2"
+    ]
+  },
+  {
+    "query_id": "2",
+    "query": "Have there been works like 'Graph Attention Networks' for graph neural network improvements?",
+    "ground_truth": [
+      "26"
+    ]
+  },
+  {
+    "query_id": "3",
+    "query": "Papers authored by Jure Leskovec",
+    "ground_truth": [
+      "24",
+      "25"
+    ]
+  },
+  {
+    "query_id": "4",
+    "query": "Research by Hamilton on inductive graph representation learning",
+    "ground_truth": [
+      "25"
+    ]
+  },
+  {
+    "query_id": "5",
+    "query": "Studies from Stanford University focusing on graph embeddings",
+    "ground_truth": [
+      "24",
+      "25"
+    ]
+  },
+  {
+    "query_id": "6",
+    "query": "Work related to time series clustering algorithms",
+    "ground_truth": [
+      "13",
+      "19",
+      "20",
+      "21"
+    ]
+  },
+  {
+    "query_id": "7",
+    "query": "Papers about joinable table search",
+    "ground_truth": [
+      "7",
+      "8"
+    ]
+  },
+  {
+    "query_id": "8",
+    "query": "Graph neural network methods introduced from 2017 onwards",
+    "ground_truth": [
+      "25",
+      "26",
+      "18"
+    ]
+  },
+  {
+    "query_id": "9",
+    "query": "Recent time series forecasting papers since 2021",
+    "ground_truth": [
+      "18"
+    ]
+  },
+  {
+    "query_id": "10",
+    "query": "VLDB papers about cardinality estimation",
+    "ground_truth": [
+      "5",
+      "6"
+    ]
+  },
+  {
+    "query_id": "11",
+    "query": "KDD publications on scalable graph representation learning",
+    "ground_truth": [
+      "24"
+    ]
+  },
+  {
+    "query_id": "12",
+    "query": "Research on semantic search over data lakes",
+    "ground_truth": [
+      "4",
+      "9"
+    ]
+  },
+  {
+    "query_id": "13",
+    "query": "Papers working on detecting the max common subgraph",
+    "ground_truth": [
+      "22",
+      "23"
+    ]
+  },
+  {
+    "query_id": "14",
+    "query": "Time series methods evaluated on the UCR dataset",
+    "ground_truth": [
+      "10",
+      "13",
+      "15",
+      "19",
+      "21"
+    ]
+  },
+  {
+    "query_id": "15",
+    "query": "Graph neural networks tested on citation networks like Cora",
+    "ground_truth": [
+      "26",
+      "28",
+      "29",
+      "30"
+    ]
+  },
+  {
+    "query_id": "16",
+    "query": "neurips paper describing the hypergraph model",
+    "ground_truth": [
+      "3"
+    ]
+  },
+  {
+    "query_id": "17",
+    "query": "2019-2022 paper introducing time series clustering algorithm",
+    "ground_truth": [
+      "19",
+      "20"
+    ]
+  },
+  {
+    "query_id": "18",
+    "query": "Paper for multivariate time series clustering",
+    "ground_truth": [
+      "20"
+    ]
+  },
+  {
+    "query_id": "19",
+    "query": "Paper with titles like 'Overlap Estimation of tables through Graph Embeddings'",
+    "ground_truth": [
+      "2"
+    ]
+  },
+  {
+    "query_id": "20",
+    "query": "Papers by Themis on time series similarity search",
+    "ground_truth": [
+      "11",
+      "12"
+    ]
+  },
+  {
+    "query_id": "21",
+    "query": "Recent papers on efficient graph active learning",
+    "ground_truth": [
+      "28",
+      "29",
+      "30"
+    ]
+  },
+  {
+    "query_id": "22",
+    "query": "Research in data lake discovery and semantic table union",
+    "ground_truth": [
+      "4",
+      "9"
+    ]
+  },
+  {
+    "query_id": "23",
+    "query": "Papers working on dataset discovery on data lakes",
+    "ground_truth": [
+      "4",
+      "7",
+      "8",
+      "9"
+    ]
+  },
+  {
+    "query_id": "24",
+    "query": "Papers studying cardinality estimation on tables",
+    "ground_truth": [
+      "5",
+      "6"
+    ]
+  },
+  {
+    "query_id": "25",
+    "query": "Papers with method that involve graph neural networks",
+    "ground_truth": [
+      "2",
+      "18",
+      "25",
+      "26",
+      "27",
+      "30",
+      "23"
+    ]
+  },
+  {
+    "query_id": "26",
+    "query": "Papers with method that involve graph neural networks in 2020 or later",
+    "ground_truth": [
+      "2",
+      "18",
+      "27",
+      "30",
+      "23"
+    ]
+  },
+  {
+    "query_id": "27",
+    "query": "Find papers on time series visualization",
+    "ground_truth": [
+      "16",
+      "17"
+    ]
+  },
+  {
+    "query_id": "28",
+    "query": "Find papers on time series similarity search without learning approach",
+    "ground_truth": [
+      "12",
+      "14",
+      "15"
+    ]
+  },
+  {
+    "query_id": "29",
+    "query": "Find papers on time series similarity search with learning approach",
+    "ground_truth": [
+      "10",
+      "11"
+    ]
+  },
+  {
+    "query_id": "30",
+    "query": "Time series similarity search papers that improve accuracy or reduce error",
+    "ground_truth": [
+      "10",
+      "11"
+    ]
+  }
+]

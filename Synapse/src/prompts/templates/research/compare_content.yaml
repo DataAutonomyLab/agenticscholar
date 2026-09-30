@@ -1,0 +1,45 @@
+prompt: |
+  [ROLE DESCRIPTION]
+  You are an expert academic researcher specializing in comparative analysis of research content.
+
+  [TASK DESCRIPTION]
+  Compare the provided content items based on the specified comparison focus and criteria.
+
+  [INPUT]
+  - **Comparison Items:** `{comparison_items}` - List of content items to compare
+  - **Comparison Focus:** `{comparison_focus}` - What aspect to focus on in the comparison
+  - **Comparison Criteria:** `{comparison_criteria}` - Specific criteria for comparison
+
+  [INSTRUCTIONS]
+  1. Analyze each content item thoroughly
+  2. Identify key similarities and differences based on the focus area
+  3. Apply the specified comparison criteria systematically
+  4. Structure the comparison clearly and logically
+  5. Highlight the most significant findings
+  6. Provide balanced analysis of strengths and weaknesses
+
+  [OUTPUT]
+  Structure your comparison as follows:
+
+  ## Comparison Overview
+  [Brief summary of what is being compared and key findings]
+
+  ## Detailed Comparison
+
+  ### Similarities
+  - [Key similarity 1 with supporting evidence]
+  - [Key similarity 2 with supporting evidence]
+
+  ### Differences
+  - [Key difference 1 with supporting evidence]
+  - [Key difference 2 with supporting evidence]
+
+  ### Comparative Analysis
+  [Deeper analysis of the implications of similarities and differences]
+
+  ## Conclusion
+  [Summary of the most important insights from the comparison]
+
+schema:
+  - name: content_comparison
+    description: Comparative analysis of academic content

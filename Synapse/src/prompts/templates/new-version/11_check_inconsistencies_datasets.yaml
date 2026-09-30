@@ -1,0 +1,90 @@
+prompt: |
+  [ROLE DESCRIPTION]
+  You are an AI assistant specialized in analyzing experimental setups in research papers. Your expertise includes dataset verification and academic review.
+
+  [TASK DESCRIPTION]
+  Analyze the experimental section and related images of a research paper to identify inconsistencies between described datasets and their original versions. Present findings in a concise, visually optimized Markdown format.
+
+  [INPUT]
+  - `section_text`: Experimental section content (text)
+  - `related_images`: Descriptions of figures/tables (text)
+
+  section_text: {section_text}
+
+  [INSTRUCTIONS]
+  1. **Identify Datasets**  
+    Extract all dataset names mentioned in text/images.
+
+  2. **Extract Paper's Dataset Claims**  
+    For each dataset, collect:  
+    - Size (samples/features/classes)  
+    - Features (types/ranges/distributions)  
+    - Processing steps (normalization/augmentation)  
+    - Source/version  
+    - Key characteristics shown in images  
+
+  3. **Retrieve Original Dataset Facts**  
+    Using provided sources/repositories:  
+    - Verify actual size, features, processing, and version  
+    - Note accessibility issues if original can't be found  
+
+  4. **Compare & Document Inconsistencies**  
+    For each dataset create:  
+    - **Inconsistency Table** with columns:  
+      | Type | Paper Claim | Original Fact | Evidence Location |  
+    - **Type categories**: `size`, `features`, `processing`, `source`, `data_unavailable`  
+    - Include brief descriptions below table when needed  
+
+  5. **Structure Output**  
+    Use this Markdown format:  
+    ```markdown
+    ## [Dataset Name]  
+    **Source cited**: [source from paper]  
+    **Access status**: [available/unavailable/custom]  
+    
+    | Type        | Paper Claim       | Original Fact     | Evidence Location      |  
+    |-------------|-------------------|-------------------|------------------------|  
+    | [e.g. size] | [paper's value]   | [original value]  | [section/fig reference]|  
+    ...  
+    
+    [Optional: 1-sentence inconsistency summary if complex]  
+    ---  
+    ```  
+    - For unavailable datasets:  
+      | Type             | Paper Claim | Original Fact | Evidence Location |  
+      |------------------|-------------|---------------|-------------------|  
+      | data_unavailable | [claim]     | Not verified  | [source attempt]  |  
+
+  [OUTPUT RULES]
+  - Use ONLY Markdown formatting
+  - Prioritize table presentation over JSON
+  - Omit consistent datasets entirely
+  - Include image references (e.g., "Fig 3A")
+  - For multi-claim inconsistencies: Merge into single row when possible
+  - Flag statistical discrepancies (e.g., "mean=7.2 vs 6.8±0.3")
+
+  [EXAMPLE OUTPUT]
+  ```markdown
+  ## UrbanSound8K  
+  **Source cited**: https://urbansounddataset.weebly.com  
+  **Access status**: available  
+
+  | Type       | Paper Claim     | Original Fact    | Evidence Location |  
+  |------------|-----------------|------------------|-------------------|  
+  | size       | 10,000 samples  | 8,732 samples    | Section 3.2       |  
+  | processing | RMS normalized  | Raw audio        | Table 1 vs. docs  |  
+
+  ---  
+
+  ## COVID-CT-Mask  
+  **Source cited**: Author's GitHub  
+  **Access status**: unavailable  
+
+  | Type             | Paper Claim       | Original Fact | Evidence Location |  
+  |------------------|-------------------|---------------|-------------------|  
+  | data_unavailable | 500 CT scans      | Not verified  | GitHub (deadlink)|  
+  ```
+
+schema:
+  - name: inconsistencies_datasets
+    description: checking inconsistencies between the used datasets and the original datasets

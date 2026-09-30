@@ -1,0 +1,78 @@
+prompt: |
+  
+  [ROLE DESCRIPTION]
+  You are an expert in data analysis and academic paper review. Your task is to analyze experimental results from multiple research papers.
+
+  [TASK DESCRIPTION]
+  You are provided with experimental results from multiple papers and their experimental settings. 
+  Your task is to check for inconsistencies in experiment results across these papers on a common dataset 
+  and a common evaluation metric.
+
+  [INPUT]  
+  - **Baseline Comparisons Sections:** extracted from each paper and each begins with `\section*{{Baseline Comparisons for Paper \paper_id{{XXX}}}}`: {base_comparison_summaries}
+  - **Per-Paper Experimental Configurations:** one for each paper in json format with `"paper_id"` field: {paper_settings}
+  - **Common Experimental Configuration:**: describe the shared settings among the papers in json format: {common_settings}
+
+  [INSTRUCTIONS]
+  1. Extract experiment results, focusing on dataset names, evaluation metrics, and performance values.
+  2. Extract experimental settings, including dataset names and evaluation metrics used.
+  3. Identify papers that share the same dataset and evaluation metric.
+  4. Compare the results for these papers to detect inconsistencies (e.g., differing performance values under identical conditions).
+  5. If inconsistencies are found, suggest possible reasons (e.g., differences in settings, preprocessing, or implementation).
+
+  [OUTPUT]
+  Generate a JSON object containing the analysis of experimental result consistency across the provided papers. The output must strictly adhere to the following structure:
+
+  ```json
+  {{
+    "consistency_analysis_results": [ // An array containing analysis for each common dataset/metric pair found
+      {{
+        // --- Analysis for one Dataset/Metric Pair ---
+        "dataset": "<dataset_name>", // The common dataset being analyzed
+        "metric": "<metric_name>",   // The common metric being analyzed
+        "metric_direction": "<Higher is Better | Lower is Better>", // Optimization direction for this metric
+        "analysis_summary": "<Brief summary for this dataset/metric pair. State clearly if results were consistent or highlight key inconsistencies found.>",
+
+        // 'inconsistencies' key should ONLY be present if inconsistencies were actually detected for this dataset/metric pair.
+        // If results are consistent, this key is omitted.
+        "inconsistencies": [ // Array of objects, each detailing an inconsistency for a specific method
+          {{
+            "method": "<method_name>", // The method showing inconsistent results across papers
+            "conflicting_reports": [ // Array listing the differing reports for this method
+              {{
+                "paper_id": "<paper_id_1>", // Identifier for the first paper with a conflicting result
+                "reported_value": "<value1>", // The value reported in paper 1. MUST be a JSON number (e.g., 1.57) OR a JSON string (e.g., "10-25", "-", "N/A") if not a standard number.
+                "relevant_settings": {{ // Key settings from paper 1 relevant to the discrepancy
+                  "setting_key_A": "<value_A1>",
+                  "setting_key_B": "<value_B1>"
+                  // Include settings specified in the 'paper_settings' input that might explain variance
+                }}
+              }},
+              {{
+                "paper_id": "<paper_id_2>", // Identifier for the second paper with a conflicting result
+                "reported_value": "<value2>", // The value reported in paper 2. MUST be a JSON number (e.g., 1.57) OR a JSON string (e.g., "10-25", "-", "N/A") if not a standard number.
+                "relevant_settings": {{
+                  "setting_key_A": "<value_A2>",
+                  "setting_key_B": "<value_B2>"
+                }}
+              }}
+              // Add more report objects if the inconsistency involves more than two papers
+            ],
+            "potential_reasons": [ // An array of strings suggesting reasons for this specific inconsistency
+              "Difference noted in 'setting_key_A'.",
+              "Reported results differ significantly despite similar settings.",
+              "Possible difference in data preprocessing not captured in settings."
+            ]
+          }}
+          // Add more objects here if OTHER methods were also inconsistent on this dataset/metric pair
+        ]
+        // --- End of Analysis for one Dataset/Metric Pair ---
+      }}
+      // Add more objects in this outer list for other common dataset/metric pairs analyzed
+    ]
+  }}
+  If no inconsistencies are found, return an empty "inconsistencies" array with a summary explaining the consistency.
+
+schema:
+  - name: inconsistencies_results
+    description: checking inconsistencies in experiment results on a common dataset and a common evaluation metric

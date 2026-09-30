@@ -1,0 +1,51 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+/synapse-client/node_modules
+/synapse-server/node_modules
+/synapse-client/.pnp
+/synapse-client/.pnp.js
+
+# testing
+/synapse-client/coverage
+
+# production
+/synapse-client/build
+
+# misc
+/synapse-client/.DS_Store
+.DS_Store
+.cursor/
+/synapse-client/.env.local
+/synapse-client/.env.development.local
+/synapse-client/.env.test.local
+/synapse-client/.env.production.local
+
+/synapse-client/npm-debug.log*
+/synapse-client/yarn-debug.log*
+/synapse-client/yarn-error.log*
+/server/python_uploads
+
+/synapse-server/uploads_node
+
+/data
+log/*
+
+test
+
+/src/synapse.egg-info
+
+__pycache__/
+
+synapse_python.db
+src/index/weaviate_instance_temp.py
+
+_environment.yml
+
+src/paper_search_in_kb/extracted_data
+src/paper_search_in_kb/papers_pdf
+
+package_install.txt
+
+log/
+.env

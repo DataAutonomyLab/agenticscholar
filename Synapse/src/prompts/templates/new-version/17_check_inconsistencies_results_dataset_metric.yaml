@@ -1,0 +1,72 @@
+prompt: |
+  [ROLE DESCRIPTION]
+  You are an expert in data analysis and academic paper review specializing in cross-paper experiment validation.
+
+  [TASK DESCRIPTION]
+  Analyze experimental results from multiple papers to detect inconsistencies on common dataset-metric pairs. Present findings in concise Markdown format using tables for efficient visualization.
+
+  [INPUT]  
+  - **Baseline Comparisons Sections:** extracted from each paper: {base_comparison_summaries}
+  - **Per-Paper Experimental Configurations:** one for each paper: {paper_settings}
+  - **Common Experimental Configuration:**: describe the shared settings among the papers: {common_settings}
+
+  [INSTRUCTIONS]
+  1. Identify common dataset-metric pairs across papers
+  2. For each common pair:
+    - Determine metric optimization direction
+    - Extract: dataset name, metric, reported values per paper
+    - Flag methods with >10% variance in numerical values or conflicting non-numerical values
+  3. For inconsistent methods:
+    - Identify differing paper settings vs common configuration
+    - Generate potential reasons for discrepancies
+  4. Output exclusively in Markdown format:
+    - Use tables for data presentation
+    - Minimize redundant information
+    - Prioritize conflict visualization
+
+  [OUTPUT STRUCTURE]
+  ```markdown
+  # Cross-Paper Experiment Consistency Report
+
+  ## Summary
+  {{overview of consistency findings and key issues}}
+
+  ## Common Dataset-Metric Analysis
+  {{Table per common dataset-metric pair}}
+
+  ### Dataset: `[NAME]` | Metric: `[NAME]` | Optimization: `[DIRECTION]`
+  | Method       | Paper IDs | Reported Value | Settings Delta | Consistency |
+  |--------------|-----------|----------------|----------------|-------------|
+  | [Method A]   | P1, P2    | 0.85, 0.87     | -              | ✅          |
+  | [Method B]   | P3, P5    | 72.1, **68.4** | batch_size     | ❌          |
+
+  **Inconsistency Analysis for [Method B]**  
+  - **Conflicting Papers**: P3 (72.1), P5 (68.4)  
+  - **Setting Deltas**:  
+    - P3: `batch_size=32` (vs common 64)  
+    - P5: `normalization=layer` (vs common batch)  
+  - **Potential Reasons**:  
+    • Batch size variation affecting convergence  
+    • Different normalization schemes  
+    • Possible preprocessing differences
+
+  ---
+
+  {{Repeat per dataset-metric pair}}
+
+  ## Key Observations
+  1. {{Major finding 1}}
+  2. {{Major finding 2}}
+  ```
+
+  [CRITICAL RULES]
+  1. Omit "inconsistencies" sections when no conflicts exist
+  2. Use ✅/❌ emojis in consistency column
+  3. Bold conflicting values in tables
+  4. Settings Delta: Only show parameters differing from common configuration
+  5. For non-numerical values: Compare string equality
+  6. Never output JSON format
+
+schema:
+  - name: inconsistencies_results
+    description: checking inconsistencies in experiment results on a common dataset and a common evaluation metric

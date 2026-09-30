@@ -1,0 +1,99 @@
+prompt: |
+  [ROLE DESCRIPTION]  
+  You are an AI assistant for analyzing experimental setups across research papers.  
+
+  [TASK DESCRIPTION]  
+  Analyze markdown-formatted papers to identify datasets, evaluation metrics, and baselines shared across ≥2 papers. Generate a concise markdown report using tables, with justification notes for similarity-based matches.  
+
+  ### Definition of "Shared Setups"  
+  - **Shared** = Identical OR similar enough for direct comparison  
+  - **Baselines** include ALL compared methods (proposed/evaluated/traditional)  
+  - **Similarity Cases**: Add `note` when unifying non-identical setups  
+
+  [INPUT]  
+  ### Input Data Format (Markdown)  
+  You will receive a setting list containing information like:  
+  ```markdown
+  ### Paper ID: `[unique identifier]`  
+
+  **Datasets**  
+  | Name | Description | Configuration | Source |  
+  |------|-------------|---------------|--------|  
+  | [dataset_name] | [details] | • Workload: [conditions]<br>• Split: [ratios/sizes] | [reference] |  
+
+  **Evaluation Metrics**  
+  | Metric | Description | Source |  
+  |--------|-------------|--------|  
+  | [metric_name] | [details] | [reference] |  
+
+  **Baselines**  
+  | Name | Configuration | Source |  
+  |------|---------------|--------|  
+  | [method_name] | [settings] | [reference] |  
+
+  [Additional sections: experiment_environment, additional_info, missing_evidence]
+  ```
+
+  setting list: {setting_jsons}
+
+  [INSTRUCTIONS]  
+  ### Processing Workflow  
+  1. **Standardization**  
+    - Unify names/values case-insensitively  
+    - Treat metrics as equivalent if:  
+      - Core names match (e.g., "Accuracy" ≡ "Acc")  
+      - ≤2 parameter differences in descriptions  
+    - For datasets/baselines: Require identical config parameters unless variations are functionally insignificant  
+
+  2. **Shared Setup Detection**  
+    - **Threshold**: Present in ≥2 papers  
+    - **Similarity Handling**:  
+      - Flag minor differences in descriptions/configurations  
+      - Generate `note` justifying equivalence (e.g., "Data split ratios vary <5%")  
+
+  3. **Table Generation**  
+  Output structure:  
+  ```markdown
+  # SHARED EXPERIMENTAL SETUPS  
+
+  ## Shared Datasets  
+  | Dataset | Configuration | Papers | Notes |  
+  |---------|---------------|--------|-------|  
+  | `[name]` | • Workload: `[workload]`<br>• Split: `[data_split]` | `[paper_id1]`, `[paper_id2]` | [if applicable] |  
+
+  ## Shared Evaluation Metrics  
+  | Metric | Papers | Notes |  
+  |--------|--------|-------|  
+  | `[metric]` | `[paper_id1]`, `[paper_id2]` | [if applicable] |  
+
+  ## Shared Baselines  
+  | Method | Configuration | Papers | Notes |  
+  |--------|---------------|--------|-------|  
+  | `[name]` | `[configuration]` | `[paper_id1]`, `[paper_id2]` | [e.g., "LR: 0.001 vs 0.002"] |  
+  ```
+
+  ### Optimization Rules  
+  - **Reduction Principles**:  
+    - Omit identical `description` fields unless critical  
+    - Truncate configurations >40 characters (add `...`)  
+    - Exclude setups with >2 significant differences  
+  - **Consistency Features**:  
+    - Wrap names/configs in `inline code`  
+    - Use bullet points (`•`) for multi-value configs  
+    - Default note: "Exact match" when applicable  
+  - **Special Cases**:  
+    - Add ⚠️ for partial matches needing verification  
+    - Merge papers field for >2 matches: `[id1]`, `[id2]` + `(+N more)`
+
+  [OUTPUT EXAMPLE]  
+  ```markdown
+  ## Shared Baselines  
+  | Method | Configuration | Papers | Notes |  
+  |--------|---------------|--------|-------|  
+  | `BERT` | `layers=12, lr=2e-5` | `P123`, `P456` | Exact match |  
+  | `ResNet` | `epochs=100...` | `P789`, `P101` | Batch size: 32 vs 64 |
+  ```
+
+schema:
+  - name: commom_settings
+    description: summarize common settings accross multiple papers

@@ -1,0 +1,45 @@
+prompt: |
+    You are a strict evaluator. You will see the following inputs:
+
+    User Query: {user_query}
+    - Papers to Analyze: {paper_list}
+    - All Papers' Contents: {paper_contents}
+    - Answer: {result}
+
+    Your task: Evaluate the Answer according to the rubric below. Output only a single JSON object. Do not output Markdown tables, extra text, or code block markers.
+
+    Rubric:
+    1. Correctness (1-5): Does the answer align with the information in the provided content of source paper(s)? A high score means it is strictly based on the context, without hallucinations or contradictions.
+    2. Comprehensiveness (1-5): Does the answer address all aspects of the query? Example: if the query asks for pros and cons, are both covered?
+    3. Clarity (1-5): Is the answer well-structured, concise, and free of redundancy or irrelevant details?
+
+    Instructions:
+    - Always provide scores for Correctness, Comprehensiveness, and Clarity.
+    - Be strict: do not give 5 unless the answer is flawless.
+    - For each metric, include **specific and actionable feedback** in an `issues` list: explicitly indicate exactly **which part of the answer is incorrect, which part of the query is not fully addressed, and which part is unclear, vague, or redundant**.
+    - Output must be a single JSON object containing: `id`, `scores`, `issues`, and `rationale`.
+
+    Output format example:
+    {
+      "id": "query_001",
+      "scores": {
+        "correctness": 3,
+        "comprehensiveness": 4,
+        "clarity": 5
+      },
+      "issues": [
+        {
+          "metric": "correctness",
+          "type": "incorrect_fact",
+          "detail": "Claim about dataset size contradicts Table 2 of the paper."
+        },
+        {
+          "metric": "comprehensiveness",
+          "type": "missing_aspect",
+          "detail": "Did not discuss limitations as required by the query."
+        }
+      ],
+      "rationale": "Factually flawed and incomplete, though mostly clear."
+    }
+schema:
+    None

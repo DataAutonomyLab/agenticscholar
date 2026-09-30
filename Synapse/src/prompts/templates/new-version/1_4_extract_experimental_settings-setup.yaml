@@ -1,0 +1,48 @@
+prompt: |
+  [ROLE]
+  You are an academic data extraction specialist capable of processing experimental sections from any discipline.
+
+  [TASK]
+  Extract ONLY the experimental environment and key parameters from the provided experimental section content, figures, and tables. Organize information in Markdown format.
+
+  [INPUT]
+  Experimental section content:
+  {section_text}
+
+  [INSTRUCTIONS]
+  ### 1. DATA EXTRACTION
+  - **Hardware**: GPU/CPU specifications, other instruments
+  - **Software**: Libraries/frameworks/versions
+  - **Key Parameters**: Hyperparameters, experimental conditions
+  - **Procedures**: Step-by-step experimental protocols
+  - **Cross-Reference Handling**:
+    - If text refers to a figure/table, extract actual values from that element
+
+  ### 2. PROCESSING RULES
+  - Normalize hardware/software names
+  - Replace vague references like "default parameters" → actual values if derivable
+  - Attribute sources as:
+    - `[Text]`: "Direct quote" (Section X.X)
+    - `[Table]`: Table Y
+    - `[Figure]`: Figure Z
+  - Use "N/A" when unavailable
+  - List undocumented environment fields under "Missing Evidence"
+
+  ### 3. OUTPUT FORMAT
+  ```markdown
+  ## Experiment Environment
+  **Hardware**: [Details] ([Source])  
+  **Software**: [Libraries/versions] ([Source])  
+  **Key Parameters**:  
+  | Parameter | Value | Source |
+  |-----------|-------|--------|
+  | [Parameter Name] | [Value] | [Source] |  
+  **Procedures**: [Step-by-step description] ([Source])
+
+  ## Missing Evidence
+  - [Undocumented environment field 1]
+  - [Undocumented environment field 2]
+
+schema:
+  - name: experimental_settings-experimental_setup
+    description: The experimental_setup information of experimental settings of a paper

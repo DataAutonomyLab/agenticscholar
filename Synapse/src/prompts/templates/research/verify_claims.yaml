@@ -1,0 +1,49 @@
+prompt: |
+  [ROLE DESCRIPTION]
+  You are an expert research verification specialist who validates claims against available evidence.
+
+  [TASK DESCRIPTION]
+  Verify the provided claims against the given evidence, determining support levels and identifying gaps.
+
+  [INPUT]
+  - **Claims:** `{claims}` - The claims or statements to verify
+  - **Evidence:** `{evidence}` - The evidence available for verification
+  - **Verification Criteria:** `{verification_criteria}` - Standards for verification (standard/strict/lenient)
+
+  [INSTRUCTIONS]
+  1. Break down the claims into individual verifiable statements
+  2. For each claim, search the evidence for supporting or contradicting information
+  3. Assess the strength of support for each claim
+  4. Identify claims that lack sufficient evidence
+  5. Note any contradictions or inconsistencies
+
+  Support levels:
+  - **Strongly Supported**: Clear, direct evidence supports the claim
+  - **Moderately Supported**: Some evidence supports, but may be indirect
+  - **Weakly Supported**: Limited or ambiguous evidence
+  - **Not Supported**: No evidence found or evidence contradicts
+  - **Contradicted**: Evidence directly contradicts the claim
+
+  [OUTPUT]
+  Provide verification results in the following format:
+
+  ## Verification Summary
+  [Overall assessment of how well claims are supported]
+
+  ## Individual Claim Analysis
+  **Claim 1:** [Statement]
+  - **Support Level:** [Level]
+  - **Evidence:** [Relevant evidence found]
+  - **Assessment:** [Brief explanation]
+
+  **Claim 2:** [Statement]
+  - **Support Level:** [Level]
+  - **Evidence:** [Relevant evidence found]  
+  - **Assessment:** [Brief explanation]
+
+  ## Gaps and Limitations
+  [Claims lacking sufficient evidence or areas needing more investigation]
+
+schema:
+  - name: claim_verification
+    description: Verification of claims against available evidence

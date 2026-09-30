@@ -1,0 +1,146 @@
+prompt: |
+
+  [ROLE DESCRIPTION]
+  You will act as an AI assistant for analyzing and synthesizing experimental setups from multiple research papers.
+
+  [TASK DESCRIPTION]
+  **You are an AI assistant tasked with analyzing multiple files, each representing a research paper with structured experimental 
+  information. Your goal is to process these files and generate a single JSON output: `Paper_Specific_Settings.json`. This file 
+  should detail settings that are unique to individual papers or inconsistent with experimental setups shared across two or more papers.**
+
+  #### Key Concepts
+
+  - **Shared Setups**: Datasets, evaluation metrics, or baselines that are identical or similar enough across two or more papers to 
+    be considered effectively equivalent for direct comparison. "Baselines" include all methods compared in the experiments (proposed, evaluated, or traditional).
+  - **Paper-Specific Settings**: Settings that are unique to a single paper or deviate from the shared setups. For each, provide 
+    an `explanation` detailing why they are unique or inconsistent (e.g., "Unique to this paper" or "Differs from shared configuration").
+
+  [INPUT]
+  #### Input JSON Structure for Each Paper
+
+  Each JSON file contains experimental details structured as follows:
+
+  ```json
+  {{
+    "paper_id": "[unique identifier]",
+    "datasets": [
+      {{
+        "name": "[dataset_name]",
+        "description": "[details]",
+        "configuration": {{"workload": "[conditions]", "data_split": "[ratios/sizes]"}},
+        "source": "[reference]"
+      }}
+    ],
+    "evaluation_metrics": [
+      {{
+        "metric": "[metric_name]",
+        "description": "[details]",
+        "source": "[reference]"
+      }}
+    ],
+    "baselines": [
+      {{
+        "name": "[method_name]",
+        "configuration": "[settings]",
+        "source": "[reference]"
+      }}
+    ],
+    "experiment_environment": {{
+      "hardware": "[specs]",
+      "software": "[versions]",
+      "hyperparameters": "[settings]",
+      "source": "[reference]"
+    }},
+    "additional_info": {{
+      "key_details": "[notes]",
+      "assumptions": "[assumptions]",
+      "source": "[reference]"
+    }},
+    "missing_evidence": ["[fields lacking documentation]"]
+  }}
+  ```
+
+  settings list: {setting_jsons}
+
+  [INSTRUCTIONS]
+  #### Processing Instructions
+
+  1. **Parse and Standardize Data**
+    - Load all JSON files and extract the following fields: `paper_id`, `datasets`, `evaluation_metrics`, and `baselines`.
+    - Standardize entries for comparison:
+      - **Datasets**: Consider two datasets identical if their `name`, `description`, and `configuration` (including 
+        `workload` and `data_split`) match or are highly similar. Note minor differences (e.g., "Descriptions vary slightly but refer to the same dataset").
+      - **Metrics**: Consider two metrics equivalent if their `metric` and `description` are identical or nearly identical (e.g., "Accuracy" vs. "Acc"). Note any unification assumptions.
+      - **Baselines**: Consider two baselines matching if their `name` and `configuration` align or are closely similar. Note minor variations.
+
+  2. **Identify Shared Setups**
+    - Aggregate entries that appear in two or more papers or are similar enough to be treated as shared:
+      - **Shared Datasets**: Datasets used across multiple papers.
+      - **Shared Metrics**: Metrics used across multiple papers.
+      - **Shared Baselines**: Methods used across multiple papers.
+    - This step establishes a baseline for identifying what is *not* shared (no output is generated here).
+
+  3. **Identify Paper-Specific Settings**
+    - For each paper, identify settings that are:
+      - **Unique**: Datasets, metrics, or baselines that do not appear in the shared setups (i.e., used in only one paper).
+      - **Inconsistent**: Settings that deviate from the shared setups (e.g., different `data_split` for a shared dataset).
+      - **Missing Evidence**: Fields listed in `missing_evidence` that affect comparability.
+    - For each paper-specific setting, provide an `explanation` (e.g., "Unique to this paper," "Differs from shared configuration," or "Undocumented, assumed unique").
+
+  
+  4. #### Final Task
+  - Analyze the provided JSON files.
+  - Produce `Paper_Specific_Settings.json` with settings unique to each paper or inconsistent with setups 
+    shared across two or more papers. Include an `explanation` for each entry to justify its inclusion.
+
+  [OUTPUT]
+  - output structure:
+        ```json
+        {{
+          "Paper_Specific_Settings": [
+            {{
+              "paper_id": "[paper_id]",
+              "unique_settings": {{
+                "datasets": [
+                  {{"name": "[dataset_name]", "explanation": "[reason for being unique or inconsistent]"}}
+                ],
+                "metrics": [
+                  {{"metric": "[metric_name]", "explanation": "[reason for being unique or inconsistent]"}}
+                ],
+                "baselines": [
+                  {{"name": "[method_name]", "explanation": "[reason for being unique or inconsistent]"}}
+                ],
+                "missing_evidence": [
+                  {{"field": "[missing_field]", "explanation": "[impact on comparability]"}}
+                ]
+              }}
+            }}
+          ]
+        }}
+        ```
+      - **Example**:
+        ```json
+        {{
+          "Paper_Specific_Settings": [
+            {{
+              "paper_id": "Paper_A",
+              "unique_settings": {{
+                "datasets": [
+                  {{"name": "Custom_X", "explanation": "Unique to Paper_A"}}
+                ],
+                "metrics": [],
+                "baselines": [
+                  {{"name": "Custom_Y", "explanation": "Specific to Paper_A"}}
+                ],
+                "missing_evidence": [
+                  {{"field": "data_split", "explanation": "Undocumented, assumed unique"}}
+                ]
+              }}
+            }}
+          ]
+        }}
+        ```
+
+schema:
+  - name: missing_experimental_settings
+    description: The missing experimental settings of a paper compared to other papers

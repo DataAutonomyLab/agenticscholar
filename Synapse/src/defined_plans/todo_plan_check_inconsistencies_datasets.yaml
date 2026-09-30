@@ -1,0 +1,25 @@
+task_scope:
+  filter_type: paper_id
+  query: "face,flat,uae,neurocard"
+
+outputs:
+  - check_inconsistencies_datasets
+
+nodes:
+  - id: retrieve_experiment
+    type: retrieve
+    mode: local
+    handler: default
+    inputs:
+      - section["Experiment"]
+    retrieval_strategy: tag
+  - id: check_inconsistencies_datasets
+    type: extract
+    mode: local
+    handler: check_inconsistencies_datasets
+    inputs:
+      - output["retrieve_experiment"]
+
+edges:
+  - from: retrieve_experiment
+    to: check_inconsistencies_datasets

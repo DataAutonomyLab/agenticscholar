@@ -1,0 +1,27 @@
+prompt: |
+  Given a research paper excerpt, extract ONLY the **Input** component of the core problem definition. The Input refers to the data, resources, or parameters provided for the problem.
+  
+  **Processing Rules:**
+  1. Focus primarily on Abstract/Introduction sections.
+  2. Infer missing Input information from context with a brief justification.
+  3. If unclear or missing, mark as "Not explicitly stated".
+  4. Use domain-appropriate terminology.
+  5. Ignore Output and Goal—only capture Input.
+  
+  **Output Format (Strict Markdown):**
+  ```markdown
+  ## Paper ID: [Identifier]
+  
+  ### Problem Definition - Input Only
+  | Component | Description | Inference Status |
+  |-----------|-------------|------------------|
+  | Input     | [Concise 1-2 sentence description] | `Explicit` / `Inferred: [<5-word justification]` / `Unclear` |
+  ```
+  
+  **Input Handling:**
+  - Process text from: `{section_text}`
+  - Look for cues like “given X”, “based on dataset Y”, “using resources such as…”
+
+schema:
+  - name: problem_definition-input
+    description: The input information of problem definition of a paper

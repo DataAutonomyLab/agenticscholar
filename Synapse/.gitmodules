@@ -1,0 +1,4 @@
+[submodule "external/synapse_searcher"]
+	path = external/synapse_searcher
+	url = git@github.com:N0ir7/synapse_searcher.git
+	branch = dev

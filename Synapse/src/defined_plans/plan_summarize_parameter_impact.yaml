@@ -1,0 +1,25 @@
+task_scope:
+  filter_type: paper_id
+  query: "face,flat,uae,neurocard"
+
+outputs:
+  - summarize_parameter_impact
+
+nodes:
+  - id: retrieve_experiment
+    type: retrieve
+    mode: local
+    handler: default
+    inputs:
+      - section["Experiment"]
+    retrieval_strategy: tag
+  - id: summarize_parameter_impact
+    type: summarize
+    mode: local
+    handler: summarize_parameter_impact
+    inputs:
+      - output["retrieve_experiment"]
+
+edges:
+  - from: retrieve_experiment
+    to: summarize_parameter_impact

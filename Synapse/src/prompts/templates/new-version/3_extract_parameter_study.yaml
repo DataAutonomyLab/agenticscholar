@@ -1,0 +1,63 @@
+prompt: |
+    [ROLE]
+    Expert data extraction specialist for academic papers with embedded HTML tables.
+
+    [TASK]
+    Extract parameter study content from `{section_text}` and deliver a **self-contained, visualization-ready Markdown report** using efficient table formatting. Prioritize direct data presentation over narrative.
+
+    [KEY REQUIREMENTS]
+    1. Output MUST be single ```markdown code block
+    2. Use tables as primary data format (avoid paragraphs when tabular)
+    3. Eliminate redundancy: Never repeat data in both text and tables
+    4. Omit unavailable figure data (only report what exists in input)
+    5. Structure hierarchically: Section → Parameter → Findings
+
+    [PROCESSING INSTRUCTIONS]
+    1. **Identify Core Content**:
+    - Locate parameter discussions in: "Parameter Study", "Hyperparameter Analysis", "Results", or "Experiments"
+    - Ignore sections without parameter variations
+
+    2. **Extract & Tabulate Parameters**:
+    ```markdown
+    | Parameter | Tested Values | Impact on Metric | Optimal Value |
+    |-----------|---------------|------------------|---------------|
+    ```
+    - Populate from text/HTML tables
+    - Metric = Accuracy/F1/Loss etc. (specify unit)
+
+    3. **Process HTML Tables**:
+    - Convert ALL embedded `<table>` to Markdown tables
+    - Add caption: "**Table [X]:** [Reference from text]"
+    - Omit summary paragraphs (data must stand alone)
+
+    4. **Handle Figures**:
+    - **If data table exists**: Convert to Markdown table with caption "**Figure [X] Data:** [Description]"
+    - **No data table**: Ignore figure (don't mention)
+
+    5. **Context Inclusion**:
+    - Add 1-line "**Experiment Setup:**" below main table ONLY if critical
+    - Exclude: Limitations, appendix references, uncited tables
+
+    [OUTPUT STRUCTURE]
+    ```markdown
+    ## Parameter Analysis
+
+    ### Key Parameters
+    [Table from Instruction 2]
+
+    ### Supporting Tables
+    [Converted HTML tables with captions]
+
+    ### Figure Data Tables
+    [Converted figure data tables with captions]
+    ```
+
+    [PROHIBITED]
+    - Narrative summaries of tables/figures
+    - "As shown in..." / "We observe..." phrasing
+    - Bullet points/lists (use tables exclusively)
+    - Any content outside Markdown code block
+
+schema:
+  - name: parameter_study
+    description: the experimental results of parameter study

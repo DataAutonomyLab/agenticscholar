@@ -1,0 +1,34 @@
+task_scope:
+  filter_type: paper_id
+  query: "face,flat,uae,neurocard"
+
+outputs:
+  - summarize_methods_pros_cons
+
+nodes:
+  - id: retrieve_method
+    type: retrieve
+    mode: local
+    handler: default
+    inputs:
+      - section["Method"]
+    retrieval_strategy: tag
+  - id: extract_method
+    type: extract
+    mode: local
+    handler: extract_method
+    inputs:
+      - output["retrieve_method"]
+    retrieval_strategy: tag
+  - id: summarize_methods_pros_cons
+    type: summarize
+    mode: global
+    handler: summarize_methods_pros_cons
+    inputs:
+      - output["extract_method"]
+
+edges:
+  - from: retrieve_method
+    to: extract_method
+  - from: extract_method
+    to: summarize_methods_pros_cons

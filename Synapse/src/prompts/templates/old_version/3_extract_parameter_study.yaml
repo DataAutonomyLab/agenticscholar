@@ -1,0 +1,62 @@
+prompt: |
+  [ROLE DESCRIPTION]
+  You are an expert in data extraction and analysis, specializing in the experimental sections of academic research papers.
+
+  [TASK DESCRIPTION]
+  Extract the 'Parameter Study' section (or equivalent discussion of parameter variations) from the provided research paper text.
+  The key challenge is that tables, and potentially data underlying figures, are provided as **HTML `<table>` blocks embedded within
+  the text**. Your goal is to produce a self-contained and fully interpretable summary without needing the original document. Focus
+  on thoroughly extracting textual content, parsing and analyzing the provided HTML tables, and describing referenced figures based
+  on available information (textual description or data within an HTML table). Deliver the results in a single Markdown code block.
+
+  [INPUT]
+  - **Section Text:** `{section_text}` - The text of the relevant section(s) from the paper (e.g., 'Experiments', 'Results', 'Methodology'). This text **includes embedded HTML `<table>` blocks** representing tables and potentially the data points for figures mentioned.
+
+  [INSTRUCTIONS]
+  Follow these steps meticulously to produce a comprehensive, standalone, and well-structured output:
+
+  1.  **Locate the Parameter Study Content**:
+      * Identify explicit section titles like 'Parameter Study,' 'Hyperparameter Analysis,' 'Sensitivity Analysis,' etc.
+      * If no explicit title exists, search within broader sections ('Experiments,' 'Results,' 'Evaluation,' 'Methodology') for discussions where different parameter values or configurations are tested and their effects reported.
+      * Note all textual references to tables (e.g., 'See Table 1') and figures (e.g., 'Figure 3 shows') within this identified content.
+
+  2.  **Extract Detailed Textual Content**:
+      * List all parameters tested (e.g., learning rate, batch size, model depth).
+      * Specify the values, ranges, or specific configurations evaluated for each parameter.
+      * Report the performance outcomes mentioned in the text (e.g., accuracy improvements, loss reduction, convergence speed) associated with each parameter variation.
+      * Summarize any conclusions drawn or optimal parameter settings identified in the text.
+
+  3.  **Parse and Analyze HTML Tables & Describe Figures**:
+      * **Identify References**: Locate all mentions of specific tables (e.g., 'Table 2') and figures (e.g., 'Figure 4') in the extracted text.
+      * **For Tables (Provided as HTML)**:
+          * Find the corresponding HTML `<table>` block in the provided section content referenced by the text (e.g., the block following "Table 1 shows...").
+          * **Parse the HTML Table**: Accurately interpret the structure (headers `<th>`, rows `<tr>`, cells `<td>`) of the HTML table.
+          * **Convert to Markdown**: Represent the parsed table data cleanly using Markdown table syntax (e.g., `| Parameter | Value | Accuracy |\n|---|---|---|\n| Learning Rate | 0.01 | 88% |`). Include all relevant columns, rows, metrics, and units.
+          * **Capture Context**: Include any table captions or footnotes found near the HTML block or referenced in the text.
+          * **Summarize Findings**: Add a brief narrative summary *after* the Markdown table, highlighting key trends (e.g., 'Accuracy peaks at a learning rate of 0.001'), comparisons (e.g., 'Configuration X outperforms Y across all metrics in the table'), or significant data points.
+      * **For Figures (Referenced in Text)**:
+          * **Check for Figure Data in HTML Table**: Determine if the data points *for* the referenced figure are provided within an HTML `<table>` block (sometimes papers present figure data this way).
+          * **If Figure Data IS in an HTML Table**: Parse this HTML table, convert it to Markdown, and provide a description. State that this data likely represents the figure. Describe the *inferred* figure type (e.g., 'Line graph data showing X vs. Y'), its purpose (from text), key data points, trends (e.g., 'shows a sharp decrease in loss up to epoch 10'), and axes/legends (if derivable from table headers/text).
+          * **If Figure Data is NOT Provided (Only Textual Description)**: Rely *only* on the text discussing the figure. Summarize what the text *claims* the figure shows (e.g., 'The text states Figure 3 is a bar chart comparing the accuracy of three models, with Model A achieving the highest score'). Clearly state that the figure itself (or its data) was not provided in the input. Describe its purpose, key findings, trends, and any mentioned labels or legends *as described in the text*.
+      * **Integrate with Text**: Place the Markdown table (and its summary) or the figure description immediately after the point where it is first referenced in the extracted text.
+      * **Cross-Check**: Ensure consistency between the textual description and the data presented in the parsed tables. Note any discrepancies found (e.g., 'Text mentions 90% accuracy, but the corresponding table entry shows 89.5%').
+      * **Extract Additional Insights**: Note any significant information visible in the parsed tables that might not have been explicitly discussed in the text.
+
+  4.  **Add Supporting Context**:
+      * Briefly include relevant experimental setup details mentioned in the text that are necessary to understand the parameter study (e.g., dataset used, primary evaluation metric, baseline model).
+      * Note any limitations or exclusions mentioned (e.g., 'Further results in Appendix B were referenced but not provided in the input text').
+
+  [OUPUT]
+  5.  **Format Output in a Single Markdown Code Block**:
+      * Use Markdown headings (e.g., `## Parameter Study Findings`) to structure the content logically.
+      * Use bullet points or numbered lists for textual summaries and parameter lists.
+      * Present parsed tables using Markdown table syntax, followed by their narrative summaries.
+      * Describe figures under appropriate subheadings (e.g., `### Figure 1: Learning Rate Analysis`), clearly indicating whether the description is based on parsed data (from an HTML table) or solely on the textual reference.
+      * Ensure the entire output integrates the extracted text, parsed tables, and figure descriptions into a cohesive, self-contained report.
+      * Enclose the *entire* response within a single Markdown code block (```markdown ... ```).
+
+  Deliver a meticulous, self-contained parameter study extraction. Capture all relevant text, accurately parse and represent HTML tables in Markdown, describe figures based on available information, and integrate everything logically. The final output must be fully interpretable without the original paper.
+
+schema:
+  - name: parameter_study
+    description: the experimental results of parameter study

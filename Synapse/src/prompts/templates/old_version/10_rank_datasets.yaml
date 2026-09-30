@@ -1,0 +1,100 @@
+prompt: |
+  
+  [ROLE DESCRIPTION]
+  You are an expert AI assistant specializing in analyzing and comparing experimental results across different datasets as presented in academic research papers. You excel at extracting performance metrics, dataset characteristics, and author insights from text and embedded HTML tables, and synthesizing this information into structured JSON output.
+
+  [TASK DESCRIPTION]
+  Analyze the provided experimental section text, which includes embedded HTML `<table>` blocks representing tables and potentially figure data. Your task is to identify all datasets used, extract performance results for the method(s) tested on them, and evaluate the datasets based on multiple criteria (absolute performance, relative improvement, reported characteristics, etc.). Your goal is to generate a structured JSON output summarizing the performance characteristics and rankings of these datasets for each analyzed method. **The output must be valid JSON, and all string values within the JSON must strictly avoid any LaTeX notation.**
+
+  [INPUT]
+  - **Section Text:** `{section_text}` - The text of the relevant experimental section(s) from the paper. This text **includes embedded HTML `<table>` blocks** that represent the original tables and potentially the underlying data for figures showing results across datasets.
+
+  [INSTRUCTIONS]
+  Follow these steps meticulously to produce the required JSON output:
+
+  1.  **Data Extraction**:
+      * Identify all distinct datasets mentioned by name in the the provided section content.
+      * Extract any described dataset properties (e.g., size, domain, class distribution, source, specific features) mentioned in the text or found in HTML table captions/footnotes.
+      * Extract quantitative results for each relevant (method, dataset, metric) combination. Use both textual descriptions and data obtained by **parsing the embedded HTML `<table>` blocks** (interpreting headers `<th>`, rows `<tr>`, and cells `<td>`).
+      * Note any explicit textual comparisons or observations made by the authors regarding dataset difficulty, suitability for the method, data quality, or performance trends across datasets.
+      * Look specifically for textual mentions or data in HTML tables indicating performance variability (e.g., standard deviation), statistical significance (e.g., p-values like "p < 0.05"), or confidence intervals related to results on specific datasets.
+
+  2.  **Multi-perspective Evaluation Criteria**:
+      * For each method analyzed, evaluate its performance on the different datasets based on the following criteria, using the extracted data:
+          * a) **Absolute Performance**: The numerical score achieved by the method on the dataset for the primary and potentially secondary evaluation metric(s).
+          * b) **Relative Improvement**: If the text/tables provide a baseline or point of comparison, note the reported percentage or absolute improvement achieved by the method on this dataset (e.g., "10 points improvement over Baseline X", "5% higher than previous work"). Clearly state the comparison point.
+          * c) **Statistical Significance**: Record if the text or tables report statistically significant differences favouring performance on this dataset compared to others or baselines.
+          * d) **Dataset Characteristics**: Note reported characteristics (scale, complexity, domain) potentially influencing performance, as discussed in the text.
+          * e) **Consistency**: Assess if the dataset consistently ranks high or low for the method across multiple reported metrics (if available).
+
+  3.  **Generate JSON Output**:
+      * Construct a single JSON object where the top-level keys are the names of the primary method(s) analyzed in the text.
+      * For each method key, populate the following nested structure. **Ensure all string values within the entire JSON object are plain text and contain NO LaTeX syntax.** Represent mathematical concepts or variables textually (e.g., use "p < 0.05", "accuracy", "alpha parameter").
+
+      ```json
+      {{
+        "MethodName": {{ // Replace "MethodName" with the actual name found in text
+          "primary_metric": {{
+            "metric_name": "String: Name of the primary metric used for ranking (e.g., Accuracy, F1-score)",
+            "ranking": [
+              "String: dataset_A_name",
+              "String: dataset_B_name"
+              // Array of dataset names ordered from best to worst performance on the primary metric
+            ],
+            "absolute_values": {{
+              "dataset_A_name": "Number or String: Performance score (e.g., 85.3 or '85.3%')",
+              "dataset_B_name": "Number or String: Performance score"
+              // Key-value pairs: dataset name -> performance score
+            }},
+            "relative_improvement": {{ // Optional: Include only if comparison data is available
+              "dataset_A_name": "String: Description of improvement (e.g., '15.2% over baseline', 'No baseline comparison available')",
+              "dataset_B_name": "String: Description of improvement"
+              // Key-value pairs: dataset name -> description of relative gain
+            }}
+          }},
+          "analysis_per_dataset": {{
+            "dataset_A_name": {{
+              "performance_summary": "String: Brief textual summary of method's performance on this dataset (e.g., 'Top performance, ranked 1st on primary metric', 'Below average performance')",
+              "reported_strengths": [
+                "String: Factor mentioned in text aiding performance (e.g., 'Method aligned with dataset domain')",
+                // Optional: Array of positive factors mentioned by authors
+              ],
+              "reported_weaknesses_challenges": [
+                "String: Factor mentioned in text hindering performance (e.g., 'Struggled with reported class imbalance')",
+                // Optional: Array of challenges mentioned by authors
+              ],
+              "reported_characteristics": {{ // Optional: Include reported properties
+                "size": "String: e.g., '50K samples', 'Not specified'",
+                "domain": "String: e.g., 'Medical imaging', 'Natural language'",
+                "notes": "String: e.g., 'High class imbalance noted'"
+                // Other key-value pairs for properties mentioned
+              }}
+            }},
+            "dataset_B_name": {{
+              // ... structure repeats for each dataset ...
+            }}
+          }},
+          "global_dataset_analysis": {{
+            "key_observation": "String: A main takeaway regarding how datasets influenced this method's performance (e.g., 'Performance significantly higher on large-scale datasets', 'Domain match appears critical')",
+            "performance_consistency": "String: Comment on ranking stability across metrics/conditions (e.g., 'Ranking consistent across Accuracy and F1', 'Dataset_A leads in Accuracy but lags in Speed')",
+            "dataset_difficulty_insights": "String: Summary of author comments on dataset difficulty or reasons for performance variations (e.g., 'Authors state Dataset C is most challenging due to noise levels mentioned in text')",
+            "uncertainty_confidence": "String: Assessment of confidence in this analysis (e.g., 'High confidence - results clearly presented and consistent in Table 2 and text', 'Medium confidence - based primarily on textual descriptions as table data incomplete')"
+          }}
+        }}
+        // Add more "MethodName" keys if multiple methods are analyzed in detail
+      }}
+      ```
+
+  [OUTPUT]
+  - Deliver the result as **a single, valid JSON object** enclosed in a JSON code block (```json ... ```).
+  - The JSON object must strictly adhere to the structure defined in Instruction 3.
+  - **CRITICAL**: All string values within the generated JSON object must contain **only plain text**. No LaTeX syntax (`$...$`, `$$...$$`, `\\command`) is permitted. Represent mathematical symbols, variables, and concepts textually.
+  - The content must be derived solely from the provided section content including text and parsed HTML tables.
+  - Ensure keys in the JSON reflect the actual method names and dataset names found in the text. Populate optional fields only when supporting information is present in the source text/tables.
+
+
+  
+
+schema:
+  - name: rank_datasets
+    description: ranking datasets used in the proposed method based on experimental results

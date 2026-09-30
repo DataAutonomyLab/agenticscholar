@@ -1,0 +1,176 @@
+prompt: |
+
+  [ROLE DESCRIPTION]
+  You will act as an AI assistant for analyzing and synthesizing experimental setups from one research paper.
+
+  [TASK DESCRIPTION]
+  You are an expert in data analysis and academic paper review. Your task is to analyze the experimental section of an 
+  academic paper and its related images to identify inconsistencies between the datasets described in the paper and their
+  original versions. The analysis must be thorough, and results must be presented in a structured JSON format, treating
+   each dataset as a separate unit.
+
+  [Input]
+  - **Experimental Section:** Includes descriptions of experiments, such as datasets used, experimental setup, and results.
+  - **Related Images:** Includes figures, tables, or charts referenced in the experimental section.
+
+  section_text: {section_text}
+
+  [INSTRUCTIONS]
+  1. **Identify All Mentioned Datasets:**
+    - Extract the names of all datasets mentioned in the experimental section and images.
+
+  2. **Extract Dataset Information from the Paper:**
+    - For each dataset, gather the following from the paper's text and images:
+      - **Name:** The dataset name as mentioned in the paper.
+      - **Size:** Number of samples, features, classes, etc.
+      - **Features:** Data types, ranges, distributions, etc.
+      - **Processing:** Preprocessing steps (e.g., normalization, augmentation).
+      - **Source:** Dataset origin or version.
+      - **Other Details:** Any additional relevant information.
+
+  3. **Obtain Original Dataset Information:**
+    - Locate the original dataset using the name or source provided in the paper (e.g., online repositories, citations, or author links).
+    - Collect the same details as in Step 2.
+
+  4. **Compare and Identify Inconsistencies:**
+    - For each dataset, compare the paper's description with the original dataset, checking for discrepancies in:
+      - Data size (e.g., sample count, feature count).
+      - Data features (e.g., types, ranges).
+      - Data processing (e.g., normalization, augmentation).
+      - Data source or version.
+      - Other relevant aspects.
+    - Verify if images (e.g., charts, sample data) align with the dataset description in the paper and the original dataset.
+
+  5. **Document Inconsistencies for Each Dataset:**
+    - For each inconsistency, include:
+      - **Type:** The category of inconsistency (e.g., "data_size", "data_processing").
+      - **Details:** Specific fields related to the inconsistency (e.g., "paper_size": "1000", "original_size": "900").
+      - **Description:** A detailed explanation of the inconsistency.
+      - **Paper Evidence:** Direct quotes or references from the TeX file or images.
+      - **Original Evidence:** Corresponding evidence from the original dataset.
+    - If a dataset has no inconsistencies, leave its "inconsistencies" list empty.
+    - If the original dataset cannot be found, add a special entry with "type": "dataset_unavailable".
+
+  6. **Organize Results in JSON Format:**
+    - Structure the output as a JSON object containing a list of datasets, each with its name and inconsistencies.
+
+  [OUPUT]
+  The output must be a JSON object with the following structure:
+
+  ```json
+  {{
+    "datasets": [
+      {{
+        "name": "string",  // Dataset name as mentioned in the paper
+        "inconsistencies": [
+          {{
+            "type": "string",  // Inconsistency type (e.g., "data_size", "data_processing")
+            "details": {{
+              // Specific fields related to the inconsistency (e.g., "paper_size": "1000", "original_size": "900")
+            }},
+            "description": "string",  // Detailed explanation of the inconsistency
+            "evidence_from_paper": "string",  // Evidence from the paper
+            "evidence_from_original": "string"  // Evidence from the original dataset
+          }}
+          // Add more inconsistencies as needed
+        ]
+      }}
+      // Add more datasets as needed
+    ]
+  }}
+  ```
+
+  - If a dataset has no inconsistencies, its "inconsistencies" list should be empty.
+  - If the original dataset is unavailable, include an entry with `"type": "dataset_unavailable"` and a brief explanation.
+
+  ### Guidelines
+  - Conduct a comprehensive analysis for each dataset, considering all relevant aspects.
+  - Ensure information is extracted from both the paper's text and images.
+  - Use clear, precise language in descriptions and evidence fields.
+  - If a dataset is custom or publicly inaccessible, note it in the inconsistencies list with `"type": "dataset_unavailable"`.
+  - Ensure the JSON is well-formatted and adheres to standard syntax.
+
+  ### Example
+  Suppose the paper mentions two datasets, "MNIST" and "CIFAR-10", with the following findings:
+
+  ```json
+  {{
+    "datasets": [
+      {{
+        "name": "MNIST",
+        "inconsistencies": [
+          {{
+            "type": "data_processing",
+            "details": {{
+              "paper_preprocessing": "normalized",
+              "original_preprocessing": "raw"
+            }},
+            "description": "The paper applied normalization to the MNIST dataset, but the original dataset is provided in raw format.",
+            "evidence_from_paper": "Section 3.2: 'We normalized the MNIST dataset before training.'",
+            "evidence_from_original": "MNIST official documentation states pixel values are raw (0-255)."
+          }}
+        ]
+      }},
+      {{
+        "name": "CIFAR-10",
+        "inconsistencies": []
+      }}
+    ]
+  }}
+  ```
+
+  Proceed with the analysis using the provided inputs, following the steps outlined above.
+  You are given two pieces of text:
+
+    1. The experimental section of a research paper.
+    2. The description of the original {{DATASET_NAME}} dataset, as provided in the corresponding paper PDF.
+
+    Your task is to check for inconsistencies between the dataset used in the current paper's experiments and the original {{DATASET_NAME}} dataset, and output any inconsistencies found in JSON format.
+
+  **Follow these steps:**
+
+  1. **Extract dataset information from the LaTeX code:**
+    - Identify sections or paragraphs that mention the {{DATASET_NAME}} dataset by name or refer to it explicitly.
+    - Extract descriptions of the dataset used, including size, structure, preprocessing steps, any modifications, or specific subsets used.
+    - Ignore mathematical formulas, tables, or figures unless they directly describe the dataset.
+
+  2. **Extract dataset information from the original dataset description:**
+    - Identify key characteristics of the {{DATASET_NAME}} dataset, such as size, structure, data sources, and any preprocessing mentioned.
+
+  3. **Compare the two datasets:**
+    - Look for differences in dataset size, structure, preprocessing, or any other aspects that could affect the experimental results.
+    - Pay attention to details such as units, specific numbers, and qualifiers (e.g., 'approximately', 'subset').
+
+  4. **Document inconsistencies:**
+    - For each inconsistency found, create a record with:
+      - `type`: a brief label for the type of inconsistency (e.g., 'size', 'preprocessing', 'structure').
+      - `description`: a detailed description of the inconsistency.
+      - `current_paper_evidence`: a quote or paraphrase from the LaTeX code.
+      - `original_dataset_evidence`: a quote or paraphrase from the original dataset description.
+
+  5. **Output the inconsistencies in JSON format:**
+    - Present the inconsistencies as an array of objects, each containing the above fields.
+    - If no inconsistencies are found, output an empty array.
+
+  **Example Output:**
+
+  ```json
+  [
+    {{
+      "type": "size",
+      "description": "The current paper uses a subset of 1000 queries, while the original dataset contains 10000 queries.",
+      "current_paper_evidence": "We used a random sample of 1000 queries from the {{DATASET_NAME}} dataset.",
+      "original_dataset_evidence": "The {{DATASET_NAME}} dataset consists of 10000 queries."
+    }},
+    {{
+      "type": "preprocessing",
+      "description": "The current paper applied additional preprocessing steps not mentioned in the original dataset.",
+      "current_paper_evidence": "Before running the experiments, we normalized the query texts and removed stop words.",
+      "original_dataset_evidence": "The dataset is provided as-is, without any preprocessing."
+    }}
+  ]
+  ```
+
+schema:
+  - name: inconsistencies_datasets
+    description: checking inconsistencies between the used datasets and the original datasets
