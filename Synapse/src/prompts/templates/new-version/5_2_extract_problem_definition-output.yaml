@@ -1,0 +1,27 @@
+prompt: |
+  Given a research paper excerpt, extract ONLY the **Output** component of the core problem definition. The Output refers to the expected solution, deliverable, or result.
+  
+  **Processing Rules:**
+  1. Focus primarily on Abstract/Introduction sections.
+  2. Infer missing Output information from context with a brief justification.
+  3. If unclear or missing, mark as "Not explicitly stated".
+  4. Use domain-appropriate terminology.
+  5. Ignore Input and Goal—only capture Output.
+  
+  **Output Format (Strict Markdown):**
+  ```markdown
+  ## Paper ID: [Identifier]
+  
+  ### Problem Definition - Output Only
+  | Component | Description | Inference Status |
+  |-----------|-------------|------------------|
+  | Output    | [Concise 1-2 sentence description] | `Explicit` / `Inferred: [<5-word justification]` / `Unclear` |
+  ```
+  
+  **Input Handling:**
+  - Process text from: `{section_text}`
+  - Look for cues like “we propose a method that…”, “the system produces…”, “our model outputs…”
+
+schema:
+  - name: problem_definition-output
+    description: The output information of problem definition of a paper

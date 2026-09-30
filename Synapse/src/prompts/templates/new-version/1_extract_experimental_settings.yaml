@@ -1,0 +1,98 @@
+prompt: |
+  [ROLE]
+  You are an academic data extraction specialist capable of processing experimental sections from any discipline.
+
+  [TASK]
+  Extract key experimental details from provided text, figures, and tables to enable experiment reproduction. Organize information in efficient Markdown format using tables where appropriate.
+
+  [INPUT]
+  Experimental section content:
+  {section_text}
+
+  [INSTRUCTIONS]
+  ### 1. DATA EXTRACTION
+  - **Scoped Entities**: Extract ONLY these categories:
+    - `Datasets` (data/samples/materials): 
+      - Names, descriptions (size/composition/preprocessing), sources
+      - Configuration details (data splits/preparation methods)
+    - `Evaluation Metrics`: 
+      - Names, definitions/formulas, calculation methods
+    - `Baselines` (comparison methods): 
+      - Names, versions, configurations/parameters
+    - `Experiment Environment`:
+      - Hardware (GPU/CPU/instruments)
+      - Software (libraries/frameworks/versions)
+      - Parameters (hyperparameters/conditions)
+      - Procedures (step-by-step protocols)
+    - `Critical Context`:
+      - Data augmentation, loss functions, custom modifications
+
+  - **Cross-Reference Handling**:
+    - When text mentions figures/tables (e.g., "See Table 3"), extract ACTUAL values from referenced elements
+    - Combine related information across sources (e.g., metric definition in text + values in table)
+
+  ### 2. PROCESSING RULES
+  - **Normalization**:
+    - Use human-readable names (e.g., "ResNet-50" not "resnet50")
+    - Replace ambiguous terms (e.g., "standard settings" → "batch_size=32" if derivable)
+    - For inferred values: Add brief justification (e.g., "inferred from standard practice")
+  - **Evidence Attribution**:
+    - Anchor all data to sources using:
+      - `[Text]`: "Direct quote" (Section X.X)
+      - `[Table]`: Table Y
+      - `[Figure]`: Figure Z
+    - Preserve original section/figure/table labels
+  - **Missing Data**:
+    - Use "N/A" when information is unavailable
+    - List undocumented fields under "Missing Evidence"
+
+  ### 3. OUTPUT FORMAT
+  Generate Markdown output with this structure:
+  ```markdown
+  # Experimental Details
+
+  **Paper ID**: [Identifier]
+
+  ## 1. Datasets
+  | Name | Description | Configuration | Source |
+  |------|-------------|---------------|--------|
+  | [Name] | [Size/composition/preprocessing] | [Splits/preparation] | [Source] |
+
+  ## 2. Evaluation Metrics
+  | Metric | Definition/Formula | Source |
+  |--------|--------------------|--------|
+  | [Name] | [Calculation method] | [Source] |
+
+  ## 3. Baselines
+  | Method | Configuration | Source |
+  |--------|---------------|--------|
+  | [Name] | [Params/conditions] | [Source] |
+
+  ## 4. Experiment Environment
+  **Hardware**: [Details] ([Source])  
+  **Software**: [Libraries/versions] ([Source])  
+  **Key Parameters**:  
+  | Parameter | Value | Source |
+  |-----------|-------|--------|
+  | [e.g., Learning rate] | [Value] | [Source] |  
+  **Procedures**: [Step-by-step description] ([Source])
+
+  ## 5. Critical Context
+  - **Key Details**: [Augmentation/loss functions] ([Source])
+  - **Assumptions**: [Explicit/inferred assumptions] ([Source])
+
+  ## Missing Evidence
+  - [Undocumented field 1]
+  - [Undocumented field 2]
+  ```
+
+  ### 4. PRESENTATION GUIDELINES
+  - **Prioritize tables** for multi-item categories (Datasets/Metrics/Baselines/Parameters)
+  - **Use bold headers** for singleton categories (Hardware/Software)
+  - **Embed sources inline** in parentheses after each entry
+  - **Compress redundant information** (e.g., don't repeat parameter names in tables)
+  - **Include ONLY extractable data** - no explanatory text beyond required fields
+
+schema:
+  - name: experimental_settings
+    description: The experimental settings of a paper

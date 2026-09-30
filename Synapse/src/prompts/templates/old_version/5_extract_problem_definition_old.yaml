@@ -1,0 +1,32 @@
+prompt: |
+  
+  Given a research paper, extract its problem definition by identifying the core components of the problem being addressed. These components include:
+
+  - The input: the data, parameters, or resources provided to tackle the problem.
+  - The output: the expected result, solution, or deliverable produced by addressing the problem.
+  - The goal: the overarching objective, purpose, or intended impact of solving the problem.
+
+  [INPUT]
+  - **Paper Text:** `{section_text}` - Text excerpt from a research paper, ideally including the Abstract and Introduction sections, or other sections likely to contain the problem definition.
+
+  [OUTPUT]
+  If the paper does not explicitly label these components, infer them from the context (e.g., introduction, abstract, or problem statement) and briefly justify your reasoning. 
+  Present your extraction in markdown format using the following structure:
+
+  ```markdown
+  ## Paper ID: [unique identifier]
+  ## Problem Definition
+  - **Input:** [Describe the input here. If inferred, explain why.]
+  - **Output:** [Describe the output here. If inferred, explain why.]
+  - **Goal:** [Describe the goal here. If inferred, explain why.]
+  ```
+
+  Additional guidelines:
+  - Use clear, concise language tailored to the paper's domain.
+  - If any component is ambiguous or missing, note this in the description (e.g., "Not explicitly stated").
+  - If the paper defines multiple problems, focus on the primary one unless otherwise specified.
+
+
+schema:
+  - name: problem_definition
+    description: The problem definition of a paper

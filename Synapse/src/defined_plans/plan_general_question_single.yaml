@@ -1,0 +1,28 @@
+# Plan definition for answering an arbitrary user query
+task_scope:
+  # Define the scope of papers to search.
+  # 'all': searches across all indexed papers.
+  # 'paper_id': Specify specific paper IDs (e.g., "arxiv_id_1,arxiv_id_2").
+  # You might need to adjust get_paper_ids_for_scope in index_registry.py
+  # if you want more sophisticated filtering, or leave it flexible here.
+  filter_type: paper_id # Or specify 'paper_id' and provide a query if needed
+  query: "face"       # Optional: Query for paper_id filter type
+
+outputs:
+  # The output is a list of answers to the user query.
+  # The answer is generated based on the context retrieved from the papers.
+  - synthesize_answer[*]
+
+nodes:
+  - id: synthesize_answer
+    # This node takes the retrieved context and generates the final answer.
+    type: llm_generation # Conceptual type
+    mode: local
+    # Replace with the actual path to your LLM handler function
+    # This function should accept the context string as its first argument.
+    handler: src.prompts.reasoner.answer_query_from_context
+    inputs:
+      - retrieval_query["what are the contribuitons in this paper?"]
+    db_name: "test_db_chunkv5"
+
+edges:

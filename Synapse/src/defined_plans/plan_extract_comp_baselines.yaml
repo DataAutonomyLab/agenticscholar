@@ -1,0 +1,25 @@
+task_scope:
+  filter_type: paper_id
+  query: "face"
+
+outputs:
+  - extract_comp_baselines
+
+nodes:
+  - id: retrieve_experiment
+    type: retrieve
+    mode: local
+    handler: default
+    inputs:
+      - section["Experiment"]
+    retrieval_strategy: tag
+  - id: extract_comp_baselines
+    type: extract
+    mode: local
+    handler: extract_comp_baselines
+    inputs:
+      - output["retrieve_experiment"]
+
+edges:
+  - from: retrieve_experiment
+    to: extract_comp_baselines

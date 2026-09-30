@@ -1,0 +1,86 @@
+prompt: |
+    [ROLE]
+    You are an expert in extracting and structuring ablation study data from academic papers, with specialized skills in parsing embedded HTML tables.
+
+    [TASK]
+    Extract ablation study data from the provided research paper text and deliver a concise, visually optimized Markdown report. Prioritize table-based presentation where possible, eliminate redundancy, and ensure standalone interpretability.
+
+    [INPUT]
+    - **Section Text**: `{section_text}` (contains embedded HTML `<table>` blocks)
+
+    [INSTRUCTIONS]
+    1. **Identify Core Content**:
+    - Locate ablation study sections using key terms: 'Ablation', 'Component Analysis', 'Module Contribution'
+    - Capture: Model name, evaluation metrics, dataset, baseline performance
+
+    2. **Create Summary Matrix** (Primary Output):
+    ```markdown
+    | Component Modified | Modification Type | Metric Impact | Criticality |
+    |--------------------|-------------------|--------------|------------|
+    | [Component]        | [Removed/Adjusted]| [▲/▼ Metric%]| [High/Med/Low] |
+    ```
+    - Derive from textual descriptions and table data
+    - Include only significant metrics (max 3 key metrics)
+    - Use directional arrows (▲/▼) for impact visualization
+
+    3. **Process Tabular Data**:
+    - Convert HTML tables to simplified Markdown format:
+    ```markdown
+    | Configuration      | Accuracy | Δ vs Baseline |
+    |--------------------|----------|---------------|
+    | Full Model         | 92.1%    | -             |
+    | w/o Attention      | 87.3%    | ▼4.8%         |
+    ```
+    - Retain only essential columns (remove redundant/repeated data)
+    - Add Δ (delta) columns showing change from baseline
+    - Max 6 rows per table - aggregate minor variations
+
+    4. **Handle Figures**:
+    - If HTML table contains figure data:
+        ```markdown
+        ### Figure [X]: [Type] of [Metric] 
+        | Component       | Value | 
+        |-----------------|-------|
+        | Baseline        | 92.1% |
+        | w/o Module A    | 88.5% |
+        ```
+        - Describe key trend in 1 sentence below table
+    - If only textual reference: 
+        `> _Figure [X] shows [trend] (data not provided)_`
+
+    5. **Structure Output**:
+    ```markdown
+    # Ablation Study: [Model Name]
+    
+    **Dataset**: [Name]  
+    **Metrics**: [Primary], [Secondary]  
+    **Baseline**: [Value]
+    
+    ## Component Impact Summary
+    [SUMMARY MATRIX TABLE]
+    
+    ## Key Observations
+    - [Critical component] caused largest drop ([X]% ▼ [Metric])
+    - [Component] showed negligible impact (<[Y]% change)
+    - [Interesting finding]
+    
+    ## Detailed Results
+    ### Table [X]: [Brief Description]
+    [SIMPLIFIED TABLE]
+    
+    ### [Figure Reference]
+    [FIGURE REPRESENTATION]
+    ```
+
+    6. **Optimization Rules**:
+    - Overtly state "not tested" for unmentioned combinations
+    - Use ▲/▼ symbols instead of "increase/decrease"
+    - Round all percentages to 1 decimal place
+    - Suppress non-essential narrative descriptions
+    - Flag data inconsistencies with † symbol
+
+    Deliver complete analysis in raw Markdown (no enclosing code blocks). Prioritize scannability through compact table formatting.
+
+schema:
+  - name: ablation_study
+    description: The experimental results of ablation study for a paper

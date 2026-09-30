@@ -1,0 +1,111 @@
+prompt: |
+  
+  [ROLE DESCRIPTION]
+  You will act as an AI assistant for analyzing and synthesizing experimental setups from multiple research papers.
+
+  [TASK DESCRIPTION]
+  You are an AI assistant tasked with analyzing multiple files, each representing a research paper with structured 
+  experimental information. Your goal is to process these files and generate a `Shared_Setups.json` file capturing 
+  experimental setups—datasets, evaluation metrics, and baselines—shared across two or more papers.
+
+  ### Definition of "Shared Setups"
+  - "Shared setups" refer to datasets, evaluation metrics, or baselines that are identical or similar enough to be 
+  onsidered effectively equivalent for direct comparison.
+  - "Baselines" include all methods compared in the experiments (proposed, evaluated, or traditional).
+  - If setups are not identical but deemed shared due to close similarity, include a `note` justifying the decision.
+
+  [INPUT]
+  ### Input JSON Structure (Per Paper)
+  Each JSON file contains experimental details structured as:
+  ```json
+  {{
+    "paper_id": "[unique identifier]",
+    "datasets": [{{"name": "[dataset_name]", "description": "[details]", "configuration": {{"workload": "[conditions]", "data_split": "[ratios/sizes]"}}, "source": "[reference]"}}],
+    "evaluation_metrics": [{{"metric": "[metric_name]", "description": "[details]", "source": "[reference]"}}],
+    "baselines": [{{"name": "[method_name]", "configuration": "[settings]", "source": "[reference]"}}],
+    "experiment_environment": {{"hardware": "[specs]", "software": "[versions]", "hyperparameters": "[settings]", "source": "[reference]"}},
+    "additional_info": {{"key_details": "[notes]", "assumptions": "[assumptions]", "source": "[reference]"}},
+    "missing_evidence": ["[fields lacking documentation]"]
+  }}
+  ```
+  settings list: {setting_jsons}
+
+  [INSTRUCTIONS]
+  ### Processing Instructions
+
+  1. **Parse and Standardize Data**
+    - Load all JSON files, focusing on `paper_id`, `datasets`, `evaluation_metrics`, and `baselines`.
+    - Standardize entries for comparison:
+      - **Datasets**: Identical if `name`, `description`, and `configuration` match or are highly similar. Note minor differences 
+        (e.g., "Descriptions vary slightly but refer to the same dataset").
+      - **Metrics**: Equivalent if `metric` and `description` are identical or nearly so (e.g., "Accuracy" vs. "Acc"). Note unification assumptions.
+      - **Baselines**: Matching if `name` and `configuration` align or are closely similar. Note minor variations.
+
+  2. **Identify Shared Setups**
+    - Aggregate entries appearing in two or more papers or similar enough to be treated as shared.
+    - For each shared setup, record:
+      - Setup details (e.g., `name`, `description`, `configuration`).
+      - List of `paper_ids` using the setup.
+      - Optional `note` justifying similarity-based unification (e.g., "Slight configuration differences deemed equivalent").
+
+  3. **Generate Shared_Setups.json**
+  Analyze the provided JSON files and generate `Shared_Setups.json`, containing setups shared across two or more papers. 
+  Include a `note` for setups unified due to similarity and list the `paper_ids` for each shared setup.
+
+  [OUTPUT]
+    - Output structure:
+      ```json
+      {{
+        "Shared_Datasets": [
+          {{
+            "name": "[dataset_name]",
+            "description": "[consolidated description]",
+            "configuration": {{"workload": "[conditions]", "data_split": "[ratios/sizes]"}},
+            "papers": ["paper_id1", "paper_id2", ...],
+            "note": "[optional justification for similarity]"
+          }},
+          ...
+        ],
+        "Shared_Metrics": [
+          {{
+            "metric": "[metric_name]",
+            "description": "[consolidated description]",
+            "papers": ["paper_id1", "paper_id2", ...],
+            "note": "[optional justification for similarity]"
+          }},
+          ...
+        ],
+        "Shared_Baselines": [
+          {{
+            "name": "[method_name]",
+            "configuration": "[consolidated configuration]",
+            "papers": ["paper_id1", "paper_id2", ...],
+            "note": "[optional justification for similarity]"
+          }},
+          ...
+        ]
+      }}
+      ```
+    - Example:
+      ```json
+      {{
+        "Shared_Baselines": [
+          {{
+            "name": "UAE",
+            "configuration": "lr=0.001, epochs=50",
+            "papers": ["Paper_A", "Paper_B"],
+            "note": "Identical settings across papers"
+          }},
+          {{
+            "name": "BERT",
+            "configuration": "pretrained, fine-tuned",
+            "papers": ["Paper_C", "Paper_D"],
+            "note": "Fine-tuning steps vary slightly but deemed equivalent"
+          }}
+        ]
+      }}
+      ```
+
+schema:
+  - name: commom_settings
+    description: summarize common settings accross multiple papers

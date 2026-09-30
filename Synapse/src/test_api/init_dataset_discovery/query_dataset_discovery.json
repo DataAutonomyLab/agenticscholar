@@ -1,0 +1,159 @@
+[
+  {
+    "query_id": 0,
+    "user_query": "In what ways does the paper demonstrate that its contributions, and how does it justify the broader impact or applicability of its approach?",
+    "paper_lists": ["D3L"],
+    "plan_id": "plan_general_question_single"
+  },
+  {
+    "query_id": 1,
+    "user_query": "please summarize the experiment settings",
+    "paper_lists": ["D3L"],
+    "plan_id": "plan_extract_experimental_settings"
+  },
+  {
+    "query_id": 2,
+    "user_query": "please summarize the experiment setups",
+    "paper_lists": ["D3L"],
+    "plan_id": "plan_extract_experimental_setup"
+  },
+  {
+    "query_id": 3,
+    "user_query": "please summarize the experiment baselines",
+    "paper_lists": ["D3L"],
+    "plan_id": "plan_extract_experimental_baselines"
+  },
+  {
+    "query_id": 4,
+    "user_query": "please summarize the experiment datasets",
+    "paper_lists": ["D3L"],
+    "plan_id": "plan_extract_experimental_datasets"
+  },
+  {
+    "query_id": 5,
+    "user_query": "please summarize the experiment metrics",
+    "paper_lists": ["D3L"],
+    "plan_id": "plan_extract_experimental_metrics"
+  },
+  {
+    "query_id": 6,
+    "user_query": "please summarize the ablation studies",
+    "paper_lists": ["D3L"],
+    "plan_id": "plan_extract_ablation_study"
+  },
+  {
+    "query_id": 7,
+    "user_query": "please summarize the parameter studies",
+    "paper_lists": ["D3L"],
+    "plan_id": "plan_extract_parameter_study"
+  },
+  {
+    "query_id": 8,
+    "user_query": "please summarize the experiment results",
+    "paper_lists": ["D3L"],
+    "plan_id": "plan_extract_comp_baselines"
+  },
+  {
+    "query_id": 9,
+    "user_query": "please summarize the proposed methods",
+    "paper_lists": ["D3L"],
+    "plan_id": "plan_extract_method"
+  },
+  {
+    "query_id": 10,
+    "user_query": "please summarize the problem definition",
+    "paper_lists": ["D3L"],
+    "plan_id": "plan_extract_problem_def"
+  },
+  {
+    "query_id": 11,
+    "user_query": "please summarize the problem input",
+    "paper_lists": ["D3L"],
+    "plan_id": "plan_extract_problem_def_input"
+  },
+  {
+    "query_id": 12,
+    "user_query": "please summarize the problem output",
+    "paper_lists": ["D3L"],
+    "plan_id": "plan_extract_problem_def_output"
+  },
+  {
+    "query_id": 13,
+    "user_query": "please summarize the problem goal",
+    "paper_lists": ["D3L"],
+    "plan_id": "plan_extract_problem_def_goal"
+  },
+  {
+    "query_id": 14,
+    "user_query": "please rank the datasets",
+    "paper_lists": ["D3L"],
+    "plan_id": "plan_rank_datasets"
+  },
+  {
+    "query_id": 15,
+    "user_query": "please rank the variants of the proposed methods",
+    "paper_lists": ["D3L"],
+    "plan_id": "plan_rank_variants"
+  },
+  {
+    "query_id": 16,
+    "user_query": "please summarize the impact of parameters",
+    "paper_lists": ["D3L"],
+    "plan_id": "plan_summarize_parameter_impact"
+  },
+  {
+    "query_id": 17,
+    "user_query": "please check inconsistencies on metrics",
+    "paper_lists": ["D3L"],
+    "plan_id": "plan_check_inconsistencies_metrics"
+  },
+  {
+    "query_id": 18,
+    "user_query": "please rank performance across papers",
+    "paper_lists": ["D3L","AURUM"],
+    "plan_id": "plan_rank_exp_results_cross_papers"
+  },
+  {
+    "query_id": 19,
+    "user_query": "please summarize common experiment settings across papers",
+    "paper_lists": ["D3L","AURUM"],
+    "plan_id": "plan_summarize_common_settings"
+  },
+  {
+    "query_id": 20,
+    "user_query": "please summarize methods with pros and cons across papers",
+    "paper_lists": ["D3L","AURUM"],
+    "plan_id": "plan_summarize_methods_pros_cons"
+  },
+  {
+    "query_id": 21,
+    "user_query": "please summarize missing experiment settings across papers",
+    "paper_lists": ["D3L","AURUM"],
+    "plan_id": "plan_summarize_missing_settings"
+  },
+  {
+    "query_id": 22,
+    "user_query": "please compare the problem definitions across papers",
+    "paper_lists": ["D3L","AURUM"],
+    "plan_id": "plan_summarize_problem_def_diff"
+  },
+  {
+    "query_id": 23,
+    "user_query": "please check inconsistencies on experiment results across papers",
+    "paper_lists": ["D3L","AURUM"],
+    "plan_id": "plan_check_inconsistencies_cross_papers"
+  },
+  {
+    "query_id": 24,
+    "user_query": "How do the limitations acknowledged or implied in each study contrast with one another, and what does this suggest about unresolved challenges in the field?",
+    "paper_lists": ["D3L","AURUM"],
+    "plan_id": "plan_general_question_single"
+  },
+  {
+    "query_id": 25,
+    "user_query": "In comparing the two approaches, what trade-offs can be observed between efficiency and predictive accuracy, and how are these trade-offs explained by the authors?",
+    "paper_lists": ["D3L","AURUM"],
+    "plan_id": "plan_general_question_single"
+  }
+
+]

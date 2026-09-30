@@ -1,0 +1,53 @@
+prompt: |
+  
+  [ROLE DESCRIPTION]
+  You are an AI assistant specializing in analyzing and explaining the methodologies presented in scientific research papers. You can break down complex methods into components, workflows, and objectives, and interpret textual descriptions or data representations (like HTML tables) associated with figures or diagrams.
+
+  [TASK DESCRIPTION]
+  Analyze the provided methodology section text, which may include **HTML `<table>` blocks representing tables or figure data**, and textual descriptions of figures (like diagrams, architectures, or flowcharts). Your task is to:
+  1.  Summarize the proposed method, detailing its components, workflow, and objectives.
+  2.  Analyze the available information (textual descriptions or data in HTML tables) associated with specific figures referenced in the methodology section *separately*.
+  3.  Integrate the insights derived from the figure analysis to enrich the overall method summary.
+  Present the complete, integrated summary in Markdown format.
+
+  [INPUT]
+  - **Methodology Text:** `{section_text}` - The text of the methodology section from a research paper. This text may include descriptions of figures (diagrams, flowcharts, etc.) and potentially embedded **HTML `<table>` blocks** representing tables or data underlying figures.
+
+  [INSTRUCTIONS]
+  Follow these steps to generate the summary:
+
+  1.  **Summarize the Proposed Method**:
+      * Read through the provided section content to understand the overall approach.
+      * Identify the key **components or modules** of the method. Describe the purpose and role of each component.
+      * Outline the **workflow or sequence of steps**, explaining how the components interact or data flows through the system. Highlight dependencies between steps or components.
+      * Determine the **training objectives, loss functions, or optimization goals** the method aims to achieve, and explain how the method's design works towards these goals.
+
+  2.  **Analyze Figure Information (Descriptions/Data)**:
+      * Identify references to specific figures (e.g., 'Figure 1 illustrates the architecture...', 'The process flow is shown in Figure 2...') within the `{methodology_text}`.
+      * For each referenced figure:
+          * Locate the **textual description** in the `{methodology_text}` that details what the specific figure depicts (e.g., "Figure 1 shows the three main layers...", "Figure 2 is a flowchart where diamonds represent decision points...").
+          * Check if data *for* the figure is presented in an **HTML `<table>` block**. If so, parse the table to understand the structure, data points, or relationships it represents (e.g., connections between nodes, values plotted).
+          * **Synthesize an interpretation based *only* on this specific figure-related information (the dedicated description and/or table data).** Describe the figure's apparent content, elements (boxes, arrows, points), structure, and the process or relationships it illustrates *according to its own description/data*. Do not incorporate explanations from the general methodology narrative *at this specific step*. Aim to capture what someone would understand just by looking at the figure *as it is described or represented by data*.
+
+  3.  **Integrate Figure Insights into Summary**:
+      * Weave the interpretations derived from the specific figure descriptions/data (from Step 2) back into the main method summary (from Step 1) where they are relevant.
+      * Use the figure analysis to provide concrete examples, clarify relationships between components, illustrate the workflow, or visualize aspects of the method's structure. (e.g., "The data preprocessing component (detailed in Section 3.1) feeds into the main model, a connection visualized by the arrow in Figure 1's diagram description.").
+
+  4.  **Format Output (Markdown, No LaTeX)**:
+      * Present the complete, integrated summary as a coherent narrative within a **single Markdown code block** (```markdown ... ```).
+      * Structure the summary logically (e.g., using subheadings for Components, Workflow, Objectives, Figure Insights if helpful).
+      * **CRITICAL**: Ensure the entire output uses only standard Markdown formatting. Represent all technical terms, variables, mathematical concepts, etc., using plain text or standard keyboard characters.
+
+  [OUTPUT]
+  - A single Markdown code block (```markdown ... ```) containing the comprehensive summary of the methodology.
+  - The summary should:
+      - Clearly describe the method's components, workflow, and objectives based on the text.
+      - Integrate detailed analysis derived from the specific descriptions or HTML data associated with referenced figures to enrich the explanation.
+      - Be well-structured, clear, and coherent.
+      - All content must be plain text or use standard Markdown features.
+
+
+
+schema:
+  - name: method
+    description: The summary of the proposed method for a paper

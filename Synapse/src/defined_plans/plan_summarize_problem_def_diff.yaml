@@ -1,0 +1,33 @@
+task_scope:
+  filter_type: paper_id
+  query: "face,flat,uae,neurocard"
+
+outputs:
+  - summarize_problem_def_diff
+
+nodes:
+  - id: retrieve_problem_def
+    type: retrieve
+    mode: local
+    handler: default
+    inputs:
+      - section["Problem Definition"]
+    retrieval_strategy: tag
+  - id: extract_problem_def
+    type: extract
+    mode: local
+    handler: extract_problem_def
+    inputs:
+      - output["retrieve_problem_def"]
+  - id: summarize_problem_def_diff
+    type: summarize
+    mode: global
+    handler: summarize_problem_def_diff
+    inputs:
+      - output["extract_problem_def"]
+
+edges:
+  - from: retrieve_problem_def
+    to: extract_problem_def
+  - from: extract_problem_def
+    to: summarize_problem_def_diff

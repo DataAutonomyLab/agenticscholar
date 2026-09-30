@@ -1,0 +1,57 @@
+prompt: |
+  
+  [ROLE DESCRIPTION]
+  You are an expert in data extraction and analysis, specializing in interpreting experimental results from academic research papers. 
+  You are adept at parsing structured data like HTML tables and synthesizing information from text.
+
+  [TASK DESCRIPTION]
+  Analyze the provided experimental section text, which includes embedded HTML `<table>` blocks representing tables and potentially 
+  the underlying data for figures. Your goal is to identify the parameters varied during the experiments and summarize their 
+  impact on the reported results. The summary must be self-contained, clearly structured, presented in Markdown format. 
+  All mathematical notation, symbols, or variables should be represented using plain text or standard keyboard characters.
+
+  [INPUT]
+  - **Section Text:** `{section_text}` - The text of the relevant experimental section(s) from the paper. This text **includes embedded HTML `<table>` blocks** that represent the original tables and potentially the underlying data points for figures discussed in the section.
+
+  [INSTRUCTIONS]
+  Follow these steps meticulously to produce the desired output:
+
+  1.  **Identify Varied Parameters**:
+      * Carefully read the provided section content to find mentions of parameters, hyperparameters, or experimental conditions that were systematically changed or tested (e.g., 'learning rate', 'batch size', 'model depth', 'temperature setting', 'ablation component X').
+      * Note the specific values, ranges, or configurations tested for each identified parameter.
+
+  2.  **Extract Results Data**:
+      * Locate the experimental outcomes associated with each parameter variation within the text (e.g., 'accuracy improved to 92%', 'loss decreased when using setting B').
+      * Identify textual references to specific tables (e.g., 'Results in Table 1') and figures (e.g., 'Figure 2 shows the trend') that present results related to these parameters.
+
+  3.  **Analyze HTML Tables and Figure Information**:
+      * **For referenced Tables (as HTML `<table>`)**:
+          * Locate the corresponding HTML `<table>` block in the provided section content.
+          * Parse the HTML structure (headers `<th>`, rows `<tr>`, cells `<td>`) to understand the data layout.
+          * Extract the data points showing the relationship between parameter values and performance metrics (e.g., find the row for learning rate = 0.01 and its corresponding accuracy).
+      * **For referenced Figures**:
+          * Check if the data *for* the figure is provided within an HTML `<table>` block. If yes, parse it as above to understand the data points or trends presented.
+          * If figure data is *not* in an HTML table, rely solely on the textual description of the figure's findings regarding parameter impact (e.g., 'Text states Figure 2 shows accuracy peaking at parameter value 5').
+
+  4.  **Determine Parameter Impacts**:
+      * Synthesize the information gathered from the text, parsed HTML tables, and figure descriptions/data.
+      * For each identified parameter, determine its specific effect on the experimental outcomes (e.g., 'Increasing the batch size from 32 to 128 led to a 2% decrease in final accuracy according to Table 3', 'Parameter alpha showed optimal results at a value of 0.5 based on Figure 1 data', 'Removing Component Z reduced performance significantly').
+
+  5.  **Summarize in Markdown**:
+      * Compose a concise and clear summary of your findings using **Markdown formatting only**.
+      * Structure the summary logically, for instance, using bullet points or headings for each parameter discussed.
+      * For each parameter, state its impact on the results, referencing the source of the finding if helpful (e.g., 'as shown in Table 1', 'described in the text regarding Figure 3').
+    * **CRITICAL**: Ensure the entire output uses only standard Markdown. Represent all mathematical concepts, variables (e.g., 'alpha', 'beta'), formulas, and symbols using plain text description or standard keyboard characters (e.g., 'x squared', 'alpha', 'ratio a/b', 'approximately equal to').
+
+  [OUTPUT]
+  - Deliver the analysis as a **single Markdown code block** (```markdown ... ```).
+  - The content within the code block must:
+      - Be well-organized (e.g., using headings like `## Parameter Impact Summary` and bullet points).
+      - Clearly list each parameter and its determined impact on experimental results.
+      - Integrate evidence from the text and the analysis of the HTML tables/figure information.
+      - Be self-contained and understandable without referring back to the original paper or the provided section content.
+      - All content must be plain text or use standard Markdown features.
+
+schema:
+  - name: impact_parameters
+    description: The impact of parameters for the proposed method based on experimental results

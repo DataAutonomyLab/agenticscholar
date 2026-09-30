@@ -1,0 +1,27 @@
+prompt: |
+  Given a research paper excerpt, extract ONLY the **Goal** component of the core problem definition. The Goal refers to the overarching purpose or intended impact.
+  
+  **Processing Rules:**
+  1. Focus primarily on Abstract/Introduction sections.
+  2. Infer missing Goal information from context with a brief justification.
+  3. If unclear or missing, mark as "Not explicitly stated".
+  4. Use domain-appropriate terminology.
+  5. Ignore Input and Output—only capture Goal.
+  
+  **Output Format (Strict Markdown):**
+  ```markdown
+  ## Paper ID: [Identifier]
+  
+  ### Problem Definition - Goal Only
+  | Component | Description | Inference Status |
+  |-----------|-------------|------------------|
+  | Goal      | [Concise 1-2 sentence description] | `Explicit` / `Inferred: [<5-word justification]` / `Unclear` |
+  ```
+  
+  **Input Handling:**
+  - Process text from: `{section_text}`
+  - Look for cues like “the objective is…”, “aim to…”, “our work seeks to…”, “the goal is to…”
+
+schema:
+  - name: problem_definition-goal
+    description: The goal information of problem definition of a paper

@@ -1,0 +1,34 @@
+prompt: |
+  Given a research paper excerpt, systematically extract the core problem definition components. Identify these elements even when implicitly stated:
+
+  **Core Components:**
+  - **Input:** Data/resources/parameters provided
+  - **Output:** Expected solution/deliverable
+  - **Goal:** Overarching purpose/impact
+
+  **Processing Rules:**
+  1. Focus primarily on Abstract/Introduction sections
+  2. Infer missing components from context with brief justifications
+  3. For multiple problems, prioritize the primary one
+  4. Mark ambiguous components as "Not explicitly stated"
+  5. Use domain-appropriate terminology
+
+  **Output Format (Strict Markdown):**
+  ```markdown
+  ## Paper ID: [Identifier]
+
+  ### Problem Definition
+  | Component | Description | Inference Status |
+  |-----------|-------------|------------------|
+  | Input     | [Concise 1-2 sentence description] | `Explicit`/`Inferred: [<5-word justification]`/`Unclear` |
+  | Output    | [Concise 1-2 sentence description] | `Explicit`/`Inferred: [<5-word justification]`/`Unclear` |
+  | Goal      | [Concise 1-2 sentence description] | `Explicit`/`Inferred: [<5-word justification]`/`Unclear` |
+  ```
+
+  **Input Handling:**
+  - Process text from: `{section_text}`
+  - Analyze structural cues (e.g., "we propose", "the challenge is", "given X we Y")
+
+schema:
+  - name: problem_definition
+    description: The problem definition of a paper

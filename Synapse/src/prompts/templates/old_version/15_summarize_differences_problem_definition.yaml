@@ -1,0 +1,54 @@
+prompt: |
+  
+  You are provided with multiple files, each containing a research paper's problem definition structured as follows:
+
+  - The first line of each file contains a unique paper ID in the format `## Paper ID: [XXX]`, where `XXX` is the paper's identifier.
+  - **Input:** Describes the data or information provided to the model (e.g., graphs, datasets, or features).
+  - **Output:** Specifies the model's deliverable or prediction (e.g., a function, classification, or recommendation).
+  - **Goal:** Outlines the research objective or intended impact (e.g., improving accuracy, scalability, or interpretability).
+
+  [INPUT]
+  - **Files:** : {problem_summaries}
+  
+  [INSTRUCTIONS]
+  Your task is to extract the paper ID from each file and analyze the problem definitions across these papers to summarize the key differences in a clear, concise, and structured manner. Focus on:
+
+  1. **Input Differences:** Compare the types, structures, or characteristics of the input data across papers (e.g., graph-based vs. text-based inputs).
+  2. **Output Differences:** Highlight variations in the outputs or deliverables (e.g., probability scores vs. ranked lists).
+  3. **Goal Differences:** Identify distinctions in the research objectives or intended outcomes (e.g., accuracy vs. diversity vs. efficiency).
+
+  [OUPUT]
+  Organize the summary as a markdown table or bullet points for clarity, referencing each paper by its extracted paper ID. Include brief explanations where differences are significant. If any papers share notable similarities, mention them briefly. Avoid reproducing full problem definitions; focus only on the differences and key insights.
+
+  ## Output Format
+  - Markdown table or bullet points summarizing differences across Input, Output, and Goal, with each paper referenced by its paper ID.
+  - Brief explanations (1-2 sentences) for each major difference.
+  - Optional: A short note on any notable similarities, if applicable.
+  
+  Example output:
+
+  ```markdown
+  ## Comparison of Problem Definitions Across Papers
+
+  Based on the provided problem definitions, here is a summary of the key differences across the papers, referenced by their IDs:
+  **Summary Table:**
+
+  | Feature | Paper ID: P101                                 | Paper ID: P102                               | Paper ID: P103                                    | Key Differences Summary                                                                                           |
+  | :------ | :--------------------------------------------- | :------------------------------------------- | :------------------------------------------------ | :---------------------------------------------------------------------------------------------------------------- |
+  | **Input** | Time-series sensor data from multiple devices | Static user profile features & item descriptions | Graph of user-item interactions (implicit feedback) | Input data types vary significantly: time-series (P101), static tabular features (P102), and interaction graph (P103). |
+  | **Output**| Anomaly score for each device time point     | Predicted user rating for unseen items       | Ranked list of recommended items per user         | Output varies: point-wise scores (P101), predicted scalar values (P102), and ranked lists (P103).                  |
+  | **Goal** | Early detection of device malfunctions       | Improve accuracy of rating prediction        | Enhance recommendation relevance and scalability | Objectives differ: reliability/detection (P101), predictive accuracy (P102), and recommendation quality/efficiency (P103). |
+
+  **Explanations of Key Differences:**
+
+  * **Input Data:** The core difference lies in the nature of the input. P101 deals with dynamic, temporal data streams. P102 uses static, feature-based descriptions. P103 relies on relational data captured in a graph structure, often representing user behavior implicitly.
+  * **Output Type:** The tasks require distinct outputs. P101 produces continuous anomaly scores for monitoring. P102 predicts specific rating values. P103 generates personalized rankings, focusing on the order of items.
+  * **Primary Goal:** While all aim to provide value, their focus differs. P101 prioritizes timely detection for system health. P102 focuses narrowly on the accuracy of predicting user preferences (ratings). P103 balances recommendation relevance (accuracy) with system performance (scalability).
+
+  **Notable Similarities:**
+  * Both P102 and P103 operate within the recommendation system domain, aiming to predict or suggest relevant items to users, though they use different input types (explicit features vs. implicit interactions) and output formats (ratings vs. ranked lists).
+    ```
+
+schema:
+  - name: differences_definition
+    description: summarizing differences among the problem definitions of different papers

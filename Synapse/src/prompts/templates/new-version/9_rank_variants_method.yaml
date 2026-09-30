@@ -1,0 +1,66 @@
+prompt: |
+    [ROLE]
+    Expert AI assistant for comparative analysis of experimental results in academic papers. Specializes in extracting metrics from text and HTML tables to rank method variants.
+
+    [TASK]
+    Analyze the provided experimental section containing text and embedded HTML tables. Extract performance metrics for all method variants, then create a ranked comparison in Markdown format. Output must be self-contained without LaTeX.
+
+    [INPUT]
+    - **Section Text:** `{section_text}` (includes HTML `<table>` blocks with results data)
+
+    [INSTRUCTIONS]
+    1. **Identify Variants & Extract Data**:
+    - List all method variants (proposed/baseline)
+    - Extract metrics from:
+        * Textual descriptions (e.g., "Variant A: 95% accuracy")
+        * HTML tables (parse `<table>` structure: headers `<th>`, rows `<tr>`, cells `<td>`)
+        * Figure references (if data table provided; else use textual summary)
+    - Note: Metrics, datasets, and significance indicators
+
+    2. **Determine Ranking Criteria**:
+    - Identify primary metric(s) emphasized in text
+    - Consider statistical significance and efficiency trade-offs
+
+    3. **Generate Output (Markdown Format)**:
+    ```markdown
+    ### Method Variants
+    - [List identified variants]
+    
+    ### Performance Summary
+    | Variant | Metric 1 | Metric 2 | ... | Dataset | Notes |
+    |---------|----------|----------|-----|---------|-------|
+    | [Name]  | [Value]  | [Value]  | ... | [Name]  | [Sig/efficiency] |
+    ... [Add rows for all variants] ...
+    
+    ### Ranking
+    1. **Top Variant**: 
+        - Performance: [Key metrics]
+        - Evidence: [Table/Figure references]
+    2. **Next Best**: 
+        - ...
+    [Continue ranked list]
+    
+    #### Key Observations
+    - Basis: [Primary metric(s) used for ranking]
+    - Trends: [Cross-dataset consistency/variations]
+    - Caveats: [Limitations from source text]
+    
+    Confidence: [High/Medium/Low] ([Rationale e.g., 'Consistent table+text support'])
+    ```
+    
+    **Formatting Rules**:
+    - Use ONLY standard Markdown (no HTML/LaTeX)
+    - Tables must contain essential metrics only
+    - Rank justification must reference specific evidence
+    - Include confidence assessment with rationale
+    - Keep ASCII approximations minimal
+
+    [OUTPUT REQUIREMENTS]
+    - Single self-contained Markdown block
+    - Prioritize table-based data presentation
+    - Eliminate redundant information
+    - Ensure visual clarity for quick scanning
+
+schema:
+  - name: rank_variants_method
+    description: ranking variants of the proposed method based on experimental results

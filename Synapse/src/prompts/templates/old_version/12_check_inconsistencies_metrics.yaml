@@ -1,0 +1,53 @@
+prompt: |
+  
+  [ROLE DESCRIPTION]
+  You are an expert in data analysis and academic paper review. Your task is to analyze the experimental 
+  section of an academic paper and its related images to identify inconsistencies between the evaluation metrics 
+  described in the paper and their original definitions.
+
+  [TASK DESCRIPTION]
+  You are given the experimental section of a scientific paper, along with related images. Your task is to check 
+  for inconsistencies between the evaluation metrics used in the experiments and the original evaluation metrics. 
+  The original evaluation metrics refer to either the standard definitions of common metrics or any custom metrics 
+  defined within the experimental section.
+
+  [INPUT]
+  exprimental section: {section_text}
+
+  [INSTRUCTIONS]
+  Specifically, you need to:
+
+  1. For standard evaluation metrics (such as accuracy, precision, recall, F1 score, etc.), verify that they are 
+    calculated and applied correctly according to their standard definitions.
+  2. For any custom evaluation metrics defined in the experimental section, ensure that their application is 
+    consistent with their provided definitions.
+  3. Check for consistency between the descriptions of the evaluation metrics in the text and their presentations in the images.
+
+  Identify any discrepancies, such as incorrect calculations, mismatched definitions, or inconsistencies between the text and the images.
+
+  [OUTPUT]
+  For each inconsistency found, record it in a JSON object with the following structure:
+  - output structure:
+  ```json
+  {{
+    "inconsistencies": [
+      {{
+        "metric": "<name of the metric>",
+        "issue": "<description of the inconsistency>",
+        "location": "<where the inconsistency is found, e.g., text, Figure X>"
+      }},
+      ...
+    ]
+  }}
+  ```
+
+  If no inconsistencies are found, return an empty list:
+  ```json
+  {{
+    "inconsistencies": []
+  }}
+  ```
+
+schema:
+  - name: inconsistencies_metrics
+    description: checking inconsistencies between the used evaluation metrics and the original evaluation metrics

@@ -1,0 +1,61 @@
+prompt: |
+  You are provided with multiple markdown-formatted files containing research paper problem definitions. Each file contains the following information (though exact formatting may vary):
+  - A unique paper ID in the format `## Paper ID: [XXX]` (where `XXX` is the identifier)
+  - **Input** section describing model inputs (e.g., data types, structures, sources)
+  - **Output** section specifying model deliverables (e.g., prediction formats, results)
+  - **Goal** section outlining research objectives (e.g., target improvements, applications)
+
+  [INPUT]
+  - **Files:** : {problem_summaries}
+
+  [INSTRUCTIONS]
+  Analyze the problem definitions across papers and generate a concise comparison focusing exclusively on key differences. Organize findings in a markdown table with the following specifications:
+
+  1. **Table Structure:**
+    - Columns: Paper IDs (as header columns)
+    - Rows: Comparison criteria (Input, Output, Goal)
+    - Final row: "Key Insights" summarizing cross-paper differences
+
+  2. **Content Requirements:**
+    - Extract paper IDs directly from each file
+    - For each criterion (Input/Output/Goal), distill differences into 1-3 bullet points per paper
+    - In "Key Insights" row:
+      * Highlight 2-3 most significant differences per criterion
+      * Use comparative phrasing (e.g., "whereas", "unlike", "while")
+      * Exclude trivial similarities
+    - Maintain extreme concision: Maximum 15 words per table cell
+
+  3. **Prohibitions:**
+    - Do not reproduce full problem definitions
+    - No separate similarity section (only include notable similarities in "Key Insights" when they contextualize differences)
+    - Avoid narrative explanations outside the table
+
+  [OUTPUT FORMAT]
+  ```markdown
+  ### Problem Definition Comparison
+
+  | Aspect       | [Paper ID 1] | [Paper ID 2] | ... | [Paper ID N] | Key Insights |
+  |--------------|--------------|--------------|-----|--------------|-------------|
+  | **Input**    | • [Bullet 1] | • [Bullet 1] | ... | • [Bullet 1] | • [Critical difference 1] |
+  |              | • [Bullet 2] | • [Bullet 2] |     |              | • [Critical difference 2] |
+  | **Output**   | • [Bullet 1] | • [Bullet 1] | ... | • [Bullet 1] | • [Critical difference 1] |
+  |              |              | • [Bullet 2] |     |              | • [Contrasting approach] |
+  | **Goal**     | • [Bullet 1] | • [Bullet 1] | ... | • [Bullet 1] | • [Objective variation] |
+  |              |              |              |     | • [Bullet 2] | • [Unique priority] |
+  ```
+
+  [EXAMPLE OUTPUT]
+  ```markdown
+  ### Problem Definition Comparison
+
+  | Aspect       | Paper ID: P101 | Paper ID: P102 | Key Insights |
+  |--------------|----------------|----------------|-------------|
+  | **Input**    | • Time-series sensor streams | • Static user attributes | • Temporal vs static data sources |
+  |              | • Multi-device network      | • Item metadata         | • Networked vs isolated entities |
+  | **Output**   | • Anomaly probability scores | • Rating predictions  | • Continuous scores vs discrete values |
+  | **Goal**     | • Real-time fault detection | • Preference modeling  | • Operational reliability vs preference accuracy |
+  ```
+
+schema:
+  - name: differences_definition
+    description: summarizing differences among the problem definitions of different papers

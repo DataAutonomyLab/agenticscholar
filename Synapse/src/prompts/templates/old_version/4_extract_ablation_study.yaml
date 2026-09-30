@@ -1,0 +1,57 @@
+prompt: |
+  [ROLE DESCRIPTION]
+  You are an expert in data extraction and analysis, specializing in the experimental sections of academic research papers.
+
+  [TASK DESCRIPTION]
+  Extract the 'Ablation Study' section (or equivalent discussion of component analysis/removal) from the provided research paper text. The primary challenge is that tables, and potentially data underlying figures, are provided as **HTML `<table>` blocks embedded within the text**. Your objective is to generate a self-contained and fully interpretable summary without needing the original document. Focus on thoroughly extracting textual content, parsing and analyzing the provided HTML tables, and describing referenced figures based on available information (textual description or data within an HTML table). Deliver the complete results in a single Markdown code block.
+
+  [INPUT]
+  - **Section Text:** `{section_text}` - The text of the relevant section(s) from the paper (e.g., 'Experiments', 'Results', 'Ablation Study'). This text **includes embedded HTML `<table>` blocks** representing tables and potentially the data points for figures mentioned.
+
+  [INSTRUCTIONS]
+  Follow these steps meticulously to produce a comprehensive, standalone, and well-structured output:
+
+  1.  **Locate the Ablation Study Content**:
+      * Identify explicit section titles such as 'Ablation Study,' 'Component Analysis,' 'Contribution of Components,' or similar terms.
+      * If explicit titles are absent, search within broader sections ('Experiments,' 'Results,' 'Evaluation') for discussions where components, features, or modules of a system (e.g., a model) are systematically removed or modified to assess their impact.
+      * Note all textual references to tables (e.g., 'Table 3 summarizes...') and figures (e.g., 'results shown in Figure 2') within this identified content.
+
+  2.  **Extract Detailed Textual Content**:
+      * List all components, features, design choices, or modules that were ablated (removed or modified).
+      * For each ablation, describe the specific change made (e.g., 'removed attention layer', 'used simpler activation function').
+      * Report the impact of each ablation on the performance metrics mentioned in the text (e.g., 'accuracy dropped by 3%', 'convergence slowed').
+      * Summarize the insights or conclusions drawn in the text regarding the contribution or necessity of each component. Identify which components were found to be most/least critical.
+
+  3.  **Parse and Analyze HTML Tables & Describe Figures**:
+      * **Identify References**: Locate all mentions of specific tables (e.g., 'Table 3') and figures (e.g., 'Figure 2') in the extracted text related to the ablation study.
+      * **For Tables (Provided as HTML)**:
+          * Find the corresponding HTML `<table>` block in the provided section content referenced by the text (e.g., the block following "Table 3 shows the ablation results...").
+          * **Parse the HTML Table**: Accurately interpret the structure (headers `<th>`, rows `<tr>`, cells `<td>`) of the HTML table. Pay attention to identifying the baseline (full model) vs. ablated configurations.
+          * **Convert to Markdown**: Represent the parsed table data cleanly using Markdown table syntax (e.g., `| Configuration      | Component Removed/Modified | Accuracy | F1-Score |\n|--------------------|----------------------------|----------|----------|\n| Full Model         | -                          | 91.5%    | 0.88     |\n| w/o Feature X      | Feature X                  | 88.2%    | 0.85     |\n| w/ Simpler Encoder | Replaced Encoder           | 90.1%    | 0.87     |`). Include all relevant configurations, component changes, metrics, and units.
+          * **Capture Context**: Include any table captions or footnotes found near the HTML block or referenced in the text.
+          * **Summarize Findings**: Add a brief narrative summary *after* the Markdown table, highlighting the key results. Focus on the impact of removing/modifying components compared to the baseline (e.g., 'Removing Feature X resulted in the largest performance degradation (3.3% drop in Accuracy), indicating its high importance. Replacing the Encoder had a smaller impact.').
+      * **For Figures (Referenced in Text)**:
+          * **Check for Figure Data in HTML Table**: Determine if the data points *for* the referenced figure are provided within an HTML `<table>` block.
+          * **If Figure Data IS in an HTML Table**: Parse this HTML table, convert it to Markdown, and provide a description. State that this data likely represents the figure. Describe the *inferred* figure type (e.g., 'Bar chart data comparing performance metrics across different ablated versions'), its purpose (from text, e.g., 'to visualize the impact of each component'), key data points/comparisons (e.g., 'shows baseline performance vs. performance after removing each component'), trends, and axes/legends (if derivable from table headers/text).
+          * **If Figure Data is NOT Provided (Only Textual Description)**: Rely *only* on the text discussing the figure. Summarize what the text *claims* the figure shows (e.g., 'The text states Figure 2 is a bar chart illustrating the drop in accuracy when each of the three main components is removed individually'). Clearly state that the figure itself (or its data) was not provided in the input. Describe its purpose, key findings, trends, and any mentioned labels or legends *as described in the text*.
+      * **Integrate with Text**: Place the Markdown table (and its summary) or the figure description immediately after the point where it is first referenced in the extracted textual content.
+      * **Cross-Check**: Ensure consistency between the textual descriptions of component impacts and the data presented in the parsed tables. Note any discrepancies.
+      * **Extract Additional Insights**: Note any significant comparisons or component impacts visible in the parsed tables that might not have been explicitly highlighted in the text.
+
+  4.  **Add Supporting Context**:
+      * Briefly include relevant experimental setup details mentioned in the text necessary to understand the ablation study (e.g., the specific model being ablated, dataset used, primary evaluation metrics, baseline performance).
+      * Note any limitations or exclusions mentioned (e.g., 'Combinations of ablations were not tested', 'Appendix results referenced but not provided').
+
+  5.  **Format Output in a Single Markdown Code Block**:
+      * Use Markdown headings (e.g., `## Ablation Study Results`) to structure the content logically.
+      * Use bullet points or numbered lists for textual summaries, component lists, and impacts.
+      * Present parsed tables using Markdown table syntax, followed by their narrative summaries highlighting key ablation findings.
+      * Describe figures under appropriate subheadings (e.g., `### Figure 2: Component Impact Visualization`), clearly indicating whether the description is based on parsed data (from an HTML table) or solely on the textual reference.
+      * Ensure the entire output integrates the extracted text, parsed tables, and figure descriptions into a cohesive, self-contained report focusing on the ablation analysis.
+      * Enclose the *entire* response within a single Markdown code block (```markdown ... ```).
+
+  Deliver a meticulous, self-contained ablation study extraction. Capture all relevant text, accurately parse and represent HTML tables in Markdown, describe figures based on available information, and integrate everything logically. The final output must be fully interpretable without the original paper.
+
+schema:
+  - name: ablation_study
+    description: The experimental results of ablation study for a paper

@@ -1,0 +1,74 @@
+prompt: |
+  [ROLE DESCRIPTION]
+  You are an expert AI analyst specializing in comparative evaluation of experimental results across multiple datasets in academic papers. You excel at interpreting performance metrics, dataset characteristics, and author insights from text and HTML tables.
+
+  [TASK DESCRIPTION]
+  Analyze the provided experimental section containing text and HTML tables. Identify all datasets, extract performance metrics for tested methods, and evaluate datasets using multiple criteria. Generate a concise Markdown report focused on clear visual presentation using tables. Avoid all LaTeX notation.
+
+  [INPUT]
+  - **Section Content:** `{section_text}` (text containing embedded HTML `<table>` elements with experimental results)
+
+  [INSTRUCTIONS]
+  Execute sequentially:
+
+  1. **Data Extraction**
+    - Identify unique dataset names and their properties (size, domain, characteristics)
+    - Extract performance metrics for all (method, dataset, metric) combinations
+    - Identify author insights about dataset difficulty/performance
+    - Record statistical indicators (std dev, p-values, confidence intervals)
+
+  2. **Multi-perspective Evaluation**
+    For each method-dataset pair:
+    - Absolute performance scores (primary + key secondary metrics)
+    - Relative improvements vs baselines (provide comparison reference)
+    - Statistical significance markers (*p*<0.05, NS, etc.)
+    - Dataset characteristics affecting performance
+    - Cross-metric performance consistency
+
+  3. **Generate Markdown Output**
+  Structure report as follows:
+
+  ```markdown
+  ## Experimental Analysis Report
+
+  ### Primary Performance Summary
+  | Method | Primary Metric | Top Dataset | Top Score | Δ vs Baseline | Statistical Significance |
+  |--------|----------------|-------------|-----------|--------------|--------------------------|
+  | [Name] | [Metric]       | [DS1]       | [X]       | [Y%] vs [Ref]| *p*<0.05                 |
+
+  ### Method: [Method Name]
+  **Primary Metric:** [Metric Name]  
+
+  | Dataset | [Metric] | Δ vs Baseline | Other Metrics | Key Characteristics | Performance Notes |
+  |---------|----------|---------------|---------------|---------------------|-------------------|
+  | [DS1]   | 85.3±0.2 | +5.1% vs SOTA | F1=0.82       | Size: 50K, Bio-med | Best domain match |
+  | [DS2]   | 76.1     | NS vs baseline| AUC=0.75      | Noisy, Imbalanced  | Struggled with data distribution |
+
+  **Global Insights**
+  - **Key Trend:** [1-sentence performance pattern]
+  - **Consistency:** [Cross-metric stability]
+  - **Domain Impact:** [Domain-specific observations]
+  - **Data Quality:** [Notes on dataset difficulty/quality]
+  ```
+
+  **REQUIREMENTS**
+  - Create **one table per method** with above headers
+  - Include only essential metrics (max 3 per dataset)
+  - Use symbols for stats: *p*<0.05, *p*<0.01, NS (non-significant)
+  - Replace bracketed placeholders with actual values
+  - Include ONLY information present in source material
+  - Absolute performance values must be exact extracts
+  - Relative improvements must specify comparison baseline
+  - Place statistical significance in dedicated column
+  - Keep characteristics column concise (max 2 key properties)
+  - Performance notes under 12 words
+  - Global insights as bullet points
+
+  **OUTPUT**
+  - Valid Markdown in ```markdown code block
+  - All text values in plain English (no LaTeX)
+  - No JSON structures or nested objects
+
+schema:
+  - name: rank_datasets
+    description: ranking datasets used in the proposed method based on experimental results

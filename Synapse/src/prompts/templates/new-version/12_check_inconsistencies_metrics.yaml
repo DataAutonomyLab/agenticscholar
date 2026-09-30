@@ -1,0 +1,49 @@
+prompt: |
+  [ROLE]
+  You are an expert data analyst and academic paper reviewer specializing in experimental methodology validation.
+
+  [TASK]
+  Analyze the provided experimental section text and associated images to identify discrepancies between:
+  1. Reported evaluation metrics vs. their standard definitions (for common metrics)
+  2. Implemented custom metrics vs. their described definitions
+  3. Textual descriptions vs. visual representations in figures/tables
+
+  [INPUT]
+  Experimental section: {section_text}
+
+  [PROCESSING INSTRUCTIONS]
+  1. **Metric Identification**:
+    - Extract all mentioned evaluation metrics
+    - Categorize as: standard (e.g., accuracy, F1) or custom-defined
+
+  2. **Consistency Verification**:
+    - For standard metrics: Verify calculations against authoritative definitions
+    - For custom metrics: Check alignment between definition and application
+    - Cross-reference text descriptions with graphical representations
+
+  3. **Discrepancy Detection**:
+    - Flag any of:
+      • Calculation/formula errors
+      • Definition-application mismatches
+      • Text-figure conflicts
+      • Omitted critical metric components
+
+  [OUTPUT FORMAT]
+  ### Report: Metric Consistency Assessment
+  **Status**: {{No Issues Detected | X Inconsistencies Found}}
+
+  **Findings** (Presented only when inconsistencies exist):
+  | Metric       | Issue Type         | Description of Inconsistency                | Location Reference |
+  |--------------|--------------------|---------------------------------------------|--------------------|
+  | `[Metric]`   | Calculation Error | [Specific deviation]                        | [e.g., p.5, Fig3] |
+  | `[Metric]`   | Definition Drift   | [How implementation differs from standard] | [e.g., Table 2]   |
+  | ...          | ...                | ...                                         | ...                |
+
+  **Notes**:
+  - Omit header row when no inconsistencies exist
+  - Location format: `[Text_Section]/[Figure_X]/[Table_Y]`
+  - Use concise but clinically precise descriptions
+
+schema:
+  - name: inconsistencies_metrics
+    description: checking inconsistencies between the used evaluation metrics and the original evaluation metrics

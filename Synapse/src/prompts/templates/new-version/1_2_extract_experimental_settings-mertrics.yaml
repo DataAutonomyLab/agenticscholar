@@ -1,0 +1,42 @@
+prompt: |
+  [ROLE]
+  You are an academic data extraction specialist capable of processing experimental sections from any discipline.
+
+  [TASK]
+  Extract ONLY evaluation metrics from the provided experimental section content, figures, and tables. Organize information in Markdown table format.
+
+  [INPUT]
+  Experimental section content:
+  {section_text}
+
+  [INSTRUCTIONS]
+  ### 1. DATA EXTRACTION
+  - **Evaluation Metrics**: 
+    - Names, definitions/formulas, calculation methods
+  - **Cross-Reference Handling**:
+    - If text refers to a figure/table (e.g., "See Table 2"), extract the metric definitions or calculation details from that element
+
+  ### 2. PROCESSING RULES
+  - Use human-readable metric names (e.g., "Mean Average Precision" not "mAP")
+  - Replace vague references like "standard accuracy" → actual definition if derivable
+  - Attribute sources as:
+    - `[Text]`: "Direct quote" (Section X.X)
+    - `[Table]`: Table Y
+    - `[Figure]`: Figure Z
+  - Use "N/A" when unavailable
+  - List undocumented metric fields under "Missing Evidence"
+
+  ### 3. OUTPUT FORMAT
+  ```markdown
+  ## Evaluation Metrics
+  | Metric | Definition/Formula | Source |
+  |--------|--------------------|--------|
+  | [Metric Name] | [Calculation method] | [Source] |
+
+  ## Missing Evidence
+  - [Undocumented metric field 1]
+  - [Undocumented metric field 2]
+
+schema:
+  - name: experimental_settings-metrics
+    description: The evaluation metrics information of experimental settings of a paper

@@ -1,0 +1,1953 @@
+[
+  {
+    "query_id": 0,
+    "user_query": "How does this paper actually show that its contributions are valid, and what reasons do the authors give for broader impact?",
+    "paper_lists": [
+      "AURUM"
+    ],
+    "plan_id": "plan_general_question_single"
+  },
+  {
+    "query_id": 1,
+    "user_query": "What experiment settings did this paper use?",
+    "paper_lists": [
+      "AURUM"
+    ],
+    "plan_id": "plan_extract_experimental_settings"
+  },
+  {
+    "query_id": 2,
+    "user_query": "How did the authors set up their experiments in this paper?",
+    "paper_lists": [
+      "AURUM"
+    ],
+    "plan_id": "plan_extract_experimental_setup"
+  },
+  {
+    "query_id": 3,
+    "user_query": "Which baselines did the paper compare against?",
+    "paper_lists": [
+      "AURUM"
+    ],
+    "plan_id": "plan_extract_experimental_baselines"
+  },
+  {
+    "query_id": 4,
+    "user_query": "What datasets did the paper use for evaluation?",
+    "paper_lists": [
+      "AURUM"
+    ],
+    "plan_id": "plan_extract_experimental_datasets"
+  },
+  {
+    "query_id": 5,
+    "user_query": "What metrics did the authors rely on to evaluate their method?",
+    "paper_lists": [
+      "AURUM"
+    ],
+    "plan_id": "plan_extract_experimental_metrics"
+  },
+  {
+    "query_id": 6,
+    "user_query": "Did the paper include ablations? If so, what did they show?",
+    "paper_lists": [
+      "AURUM"
+    ],
+    "plan_id": "plan_extract_ablation_study"
+  },
+  {
+    "query_id": 7,
+    "user_query": "What kinds of parameter studies are reported in this paper?",
+    "paper_lists": [
+      "AURUM"
+    ],
+    "plan_id": "plan_extract_parameter_study"
+  },
+  {
+    "query_id": 8,
+    "user_query": "How does the proposed method perform compared with the baselines?",
+    "paper_lists": [
+      "AURUM"
+    ],
+    "plan_id": "plan_extract_comp_baselines"
+  },
+  {
+    "query_id": 9,
+    "user_query": "What method is proposed in this paper?",
+    "paper_lists": [
+      "AURUM"
+    ],
+    "plan_id": "plan_extract_method"
+  },
+  {
+    "query_id": 10,
+    "user_query": "What problem do the authors define?",
+    "paper_lists": [
+      "AURUM"
+    ],
+    "plan_id": "plan_extract_problem_def"
+  },
+  {
+    "query_id": 11,
+    "user_query": "What inputs are assumed in the problem definition?",
+    "paper_lists": [
+      "AURUM"
+    ],
+    "plan_id": "plan_extract_problem_def_input"
+  },
+  {
+    "query_id": 12,
+    "user_query": "What outputs are expected from the solution?",
+    "paper_lists": [
+      "AURUM"
+    ],
+    "plan_id": "plan_extract_problem_def_output"
+  },
+  {
+    "query_id": 13,
+    "user_query": "What is the ultimate goal in the problem definition?",
+    "paper_lists": [
+      "AURUM"
+    ],
+    "plan_id": "plan_extract_problem_def_goal"
+  },
+  {
+    "query_id": 14,
+    "user_query": "Among the datasets used in this paper, which ones stand out and how would you rank them?",
+    "paper_lists": [
+      "AURUM"
+    ],
+    "plan_id": "plan_rank_datasets"
+  },
+  {
+    "query_id": 15,
+    "user_query": "The paper proposes variants—how do these variants compare or rank?",
+    "paper_lists": [
+      "AURUM"
+    ],
+    "plan_id": "plan_rank_variants"
+  },
+  {
+    "query_id": 16,
+    "user_query": "How do different parameter choices affect the results in this paper?",
+    "paper_lists": [
+      "AURUM"
+    ],
+    "plan_id": "plan_summarize_parameter_impact"
+  },
+  {
+    "query_id": 17,
+    "user_query": "Are there inconsistencies or contradictions in the reported metrics within this paper?",
+    "paper_lists": [
+      "AURUM"
+    ],
+    "plan_id": "plan_check_inconsistencies_metrics"
+  },
+  {
+    "query_id": 18,
+    "user_query": "How does this paper actually show that its contributions are valid, and what reasons do the authors give for broader impact?",
+    "paper_lists": [
+      "D3L"
+    ],
+    "plan_id": "plan_general_question_single"
+  },
+  {
+    "query_id": 19,
+    "user_query": "What experiment settings did this paper use?",
+    "paper_lists": [
+      "D3L"
+    ],
+    "plan_id": "plan_extract_experimental_settings"
+  },
+  {
+    "query_id": 20,
+    "user_query": "How did the authors set up their experiments in this paper?",
+    "paper_lists": [
+      "D3L"
+    ],
+    "plan_id": "plan_extract_experimental_setup"
+  },
+  {
+    "query_id": 21,
+    "user_query": "Which baselines did the paper compare against?",
+    "paper_lists": [
+      "D3L"
+    ],
+    "plan_id": "plan_extract_experimental_baselines"
+  },
+  {
+    "query_id": 22,
+    "user_query": "What datasets did the paper use for evaluation?",
+    "paper_lists": [
+      "D3L"
+    ],
+    "plan_id": "plan_extract_experimental_datasets"
+  },
+  {
+    "query_id": 23,
+    "user_query": "What metrics did the authors rely on to evaluate their method?",
+    "paper_lists": [
+      "D3L"
+    ],
+    "plan_id": "plan_extract_experimental_metrics"
+  },
+  {
+    "query_id": 24,
+    "user_query": "Did the paper include ablations? If so, what did they show?",
+    "paper_lists": [
+      "D3L"
+    ],
+    "plan_id": "plan_extract_ablation_study"
+  },
+  {
+    "query_id": 25,
+    "user_query": "What kinds of parameter studies are reported in this paper?",
+    "paper_lists": [
+      "D3L"
+    ],
+    "plan_id": "plan_extract_parameter_study"
+  },
+  {
+    "query_id": 26,
+    "user_query": "How does the proposed method perform compared with the baselines?",
+    "paper_lists": [
+      "D3L"
+    ],
+    "plan_id": "plan_extract_comp_baselines"
+  },
+  {
+    "query_id": 27,
+    "user_query": "What method is proposed in this paper?",
+    "paper_lists": [
+      "D3L"
+    ],
+    "plan_id": "plan_extract_method"
+  },
+  {
+    "query_id": 28,
+    "user_query": "What problem do the authors define?",
+    "paper_lists": [
+      "D3L"
+    ],
+    "plan_id": "plan_extract_problem_def"
+  },
+  {
+    "query_id": 29,
+    "user_query": "What inputs are assumed in the problem definition?",
+    "paper_lists": [
+      "D3L"
+    ],
+    "plan_id": "plan_extract_problem_def_input"
+  },
+  {
+    "query_id": 30,
+    "user_query": "What outputs are expected from the solution?",
+    "paper_lists": [
+      "D3L"
+    ],
+    "plan_id": "plan_extract_problem_def_output"
+  },
+  {
+    "query_id": 31,
+    "user_query": "What is the ultimate goal in the problem definition?",
+    "paper_lists": [
+      "D3L"
+    ],
+    "plan_id": "plan_extract_problem_def_goal"
+  },
+  {
+    "query_id": 32,
+    "user_query": "Among the datasets used in this paper, which ones stand out and how would you rank them?",
+    "paper_lists": [
+      "D3L"
+    ],
+    "plan_id": "plan_rank_datasets"
+  },
+  {
+    "query_id": 33,
+    "user_query": "The paper proposes variants—how do these variants compare or rank?",
+    "paper_lists": [
+      "D3L"
+    ],
+    "plan_id": "plan_rank_variants"
+  },
+  {
+    "query_id": 34,
+    "user_query": "How do different parameter choices affect the results in this paper?",
+    "paper_lists": [
+      "D3L"
+    ],
+    "plan_id": "plan_summarize_parameter_impact"
+  },
+  {
+    "query_id": 35,
+    "user_query": "Are there inconsistencies or contradictions in the reported metrics within this paper?",
+    "paper_lists": [
+      "D3L"
+    ],
+    "plan_id": "plan_check_inconsistencies_metrics"
+  },
+  {
+    "query_id": 36,
+    "user_query": "How does this paper actually show that its contributions are valid, and what reasons do the authors give for broader impact?",
+    "paper_lists": [
+      "BLEND"
+    ],
+    "plan_id": "plan_general_question_single"
+  },
+  {
+    "query_id": 37,
+    "user_query": "What experiment settings did this paper use?",
+    "paper_lists": [
+      "BLEND"
+    ],
+    "plan_id": "plan_extract_experimental_settings"
+  },
+  {
+    "query_id": 38,
+    "user_query": "How did the authors set up their experiments in this paper?",
+    "paper_lists": [
+      "BLEND"
+    ],
+    "plan_id": "plan_extract_experimental_setup"
+  },
+  {
+    "query_id": 39,
+    "user_query": "Which baselines did the paper compare against?",
+    "paper_lists": [
+      "BLEND"
+    ],
+    "plan_id": "plan_extract_experimental_baselines"
+  },
+  {
+    "query_id": 40,
+    "user_query": "What datasets did the paper use for evaluation?",
+    "paper_lists": [
+      "BLEND"
+    ],
+    "plan_id": "plan_extract_experimental_datasets"
+  },
+  {
+    "query_id": 41,
+    "user_query": "What metrics did the authors rely on to evaluate their method?",
+    "paper_lists": [
+      "BLEND"
+    ],
+    "plan_id": "plan_extract_experimental_metrics"
+  },
+  {
+    "query_id": 42,
+    "user_query": "Did the paper include ablations? If so, what did they show?",
+    "paper_lists": [
+      "BLEND"
+    ],
+    "plan_id": "plan_extract_ablation_study"
+  },
+  {
+    "query_id": 43,
+    "user_query": "What kinds of parameter studies are reported in this paper?",
+    "paper_lists": [
+      "BLEND"
+    ],
+    "plan_id": "plan_extract_parameter_study"
+  },
+  {
+    "query_id": 44,
+    "user_query": "How does the proposed method perform compared with the baselines?",
+    "paper_lists": [
+      "BLEND"
+    ],
+    "plan_id": "plan_extract_comp_baselines"
+  },
+  {
+    "query_id": 45,
+    "user_query": "What method is proposed in this paper?",
+    "paper_lists": [
+      "BLEND"
+    ],
+    "plan_id": "plan_extract_method"
+  },
+  {
+    "query_id": 46,
+    "user_query": "What problem do the authors define?",
+    "paper_lists": [
+      "BLEND"
+    ],
+    "plan_id": "plan_extract_problem_def"
+  },
+  {
+    "query_id": 47,
+    "user_query": "What inputs are assumed in the problem definition?",
+    "paper_lists": [
+      "BLEND"
+    ],
+    "plan_id": "plan_extract_problem_def_input"
+  },
+  {
+    "query_id": 48,
+    "user_query": "What outputs are expected from the solution?",
+    "paper_lists": [
+      "BLEND"
+    ],
+    "plan_id": "plan_extract_problem_def_output"
+  },
+  {
+    "query_id": 49,
+    "user_query": "What is the ultimate goal in the problem definition?",
+    "paper_lists": [
+      "BLEND"
+    ],
+    "plan_id": "plan_extract_problem_def_goal"
+  },
+  {
+    "query_id": 50,
+    "user_query": "Among the datasets used in this paper, which ones stand out and how would you rank them?",
+    "paper_lists": [
+      "BLEND"
+    ],
+    "plan_id": "plan_rank_datasets"
+  },
+  {
+    "query_id": 51,
+    "user_query": "The paper proposes variants—how do these variants compare or rank?",
+    "paper_lists": [
+      "BLEND"
+    ],
+    "plan_id": "plan_rank_variants"
+  },
+  {
+    "query_id": 52,
+    "user_query": "How do different parameter choices affect the results in this paper?",
+    "paper_lists": [
+      "BLEND"
+    ],
+    "plan_id": "plan_summarize_parameter_impact"
+  },
+  {
+    "query_id": 53,
+    "user_query": "Are there inconsistencies or contradictions in the reported metrics within this paper?",
+    "paper_lists": [
+      "BLEND"
+    ],
+    "plan_id": "plan_check_inconsistencies_metrics"
+  },
+  {
+    "query_id": 54,
+    "user_query": "How does this paper actually show that its contributions are valid, and what reasons do the authors give for broader impact?",
+    "paper_lists": [
+      "DeepJoin"
+    ],
+    "plan_id": "plan_general_question_single"
+  },
+  {
+    "query_id": 55,
+    "user_query": "What experiment settings did this paper use?",
+    "paper_lists": [
+      "DeepJoin"
+    ],
+    "plan_id": "plan_extract_experimental_settings"
+  },
+  {
+    "query_id": 56,
+    "user_query": "How did the authors set up their experiments in this paper?",
+    "paper_lists": [
+      "DeepJoin"
+    ],
+    "plan_id": "plan_extract_experimental_setup"
+  },
+  {
+    "query_id": 57,
+    "user_query": "Which baselines did the paper compare against?",
+    "paper_lists": [
+      "DeepJoin"
+    ],
+    "plan_id": "plan_extract_experimental_baselines"
+  },
+  {
+    "query_id": 58,
+    "user_query": "What datasets did the paper use for evaluation?",
+    "paper_lists": [
+      "DeepJoin"
+    ],
+    "plan_id": "plan_extract_experimental_datasets"
+  },
+  {
+    "query_id": 59,
+    "user_query": "What metrics did the authors rely on to evaluate their method?",
+    "paper_lists": [
+      "DeepJoin"
+    ],
+    "plan_id": "plan_extract_experimental_metrics"
+  },
+  {
+    "query_id": 60,
+    "user_query": "Did the paper include ablations? If so, what did they show?",
+    "paper_lists": [
+      "DeepJoin"
+    ],
+    "plan_id": "plan_extract_ablation_study"
+  },
+  {
+    "query_id": 61,
+    "user_query": "What kinds of parameter studies are reported in this paper?",
+    "paper_lists": [
+      "DeepJoin"
+    ],
+    "plan_id": "plan_extract_parameter_study"
+  },
+  {
+    "query_id": 62,
+    "user_query": "How does the proposed method perform compared with the baselines?",
+    "paper_lists": [
+      "DeepJoin"
+    ],
+    "plan_id": "plan_extract_comp_baselines"
+  },
+  {
+    "query_id": 63,
+    "user_query": "What method is proposed in this paper?",
+    "paper_lists": [
+      "DeepJoin"
+    ],
+    "plan_id": "plan_extract_method"
+  },
+  {
+    "query_id": 64,
+    "user_query": "What problem do the authors define?",
+    "paper_lists": [
+      "DeepJoin"
+    ],
+    "plan_id": "plan_extract_problem_def"
+  },
+  {
+    "query_id": 65,
+    "user_query": "What inputs are assumed in the problem definition?",
+    "paper_lists": [
+      "DeepJoin"
+    ],
+    "plan_id": "plan_extract_problem_def_input"
+  },
+  {
+    "query_id": 66,
+    "user_query": "What outputs are expected from the solution?",
+    "paper_lists": [
+      "DeepJoin"
+    ],
+    "plan_id": "plan_extract_problem_def_output"
+  },
+  {
+    "query_id": 67,
+    "user_query": "What is the ultimate goal in the problem definition?",
+    "paper_lists": [
+      "DeepJoin"
+    ],
+    "plan_id": "plan_extract_problem_def_goal"
+  },
+  {
+    "query_id": 68,
+    "user_query": "Among the datasets used in this paper, which ones stand out and how would you rank them?",
+    "paper_lists": [
+      "DeepJoin"
+    ],
+    "plan_id": "plan_rank_datasets"
+  },
+  {
+    "query_id": 69,
+    "user_query": "The paper proposes variants—how do these variants compare or rank?",
+    "paper_lists": [
+      "DeepJoin"
+    ],
+    "plan_id": "plan_rank_variants"
+  },
+  {
+    "query_id": 70,
+    "user_query": "How do different parameter choices affect the results in this paper?",
+    "paper_lists": [
+      "DeepJoin"
+    ],
+    "plan_id": "plan_summarize_parameter_impact"
+  },
+  {
+    "query_id": 71,
+    "user_query": "Are there inconsistencies or contradictions in the reported metrics within this paper?",
+    "paper_lists": [
+      "DeepJoin"
+    ],
+    "plan_id": "plan_check_inconsistencies_metrics"
+  },
+  {
+    "query_id": 72,
+    "user_query": "How does this paper actually show that its contributions are valid, and what reasons do the authors give for broader impact?",
+    "paper_lists": [
+      "JOSIE"
+    ],
+    "plan_id": "plan_general_question_single"
+  },
+  {
+    "query_id": 73,
+    "user_query": "What experiment settings did this paper use?",
+    "paper_lists": [
+      "JOSIE"
+    ],
+    "plan_id": "plan_extract_experimental_settings"
+  },
+  {
+    "query_id": 74,
+    "user_query": "How did the authors set up their experiments in this paper?",
+    "paper_lists": [
+      "JOSIE"
+    ],
+    "plan_id": "plan_extract_experimental_setup"
+  },
+  {
+    "query_id": 75,
+    "user_query": "Which baselines did the paper compare against?",
+    "paper_lists": [
+      "JOSIE"
+    ],
+    "plan_id": "plan_extract_experimental_baselines"
+  },
+  {
+    "query_id": 76,
+    "user_query": "What datasets did the paper use for evaluation?",
+    "paper_lists": [
+      "JOSIE"
+    ],
+    "plan_id": "plan_extract_experimental_datasets"
+  },
+  {
+    "query_id": 77,
+    "user_query": "What metrics did the authors rely on to evaluate their method?",
+    "paper_lists": [
+      "JOSIE"
+    ],
+    "plan_id": "plan_extract_experimental_metrics"
+  },
+  {
+    "query_id": 78,
+    "user_query": "Did the paper include ablations? If so, what did they show?",
+    "paper_lists": [
+      "JOSIE"
+    ],
+    "plan_id": "plan_extract_ablation_study"
+  },
+  {
+    "query_id": 79,
+    "user_query": "What kinds of parameter studies are reported in this paper?",
+    "paper_lists": [
+      "JOSIE"
+    ],
+    "plan_id": "plan_extract_parameter_study"
+  },
+  {
+    "query_id": 80,
+    "user_query": "How does the proposed method perform compared with the baselines?",
+    "paper_lists": [
+      "JOSIE"
+    ],
+    "plan_id": "plan_extract_comp_baselines"
+  },
+  {
+    "query_id": 81,
+    "user_query": "What method is proposed in this paper?",
+    "paper_lists": [
+      "JOSIE"
+    ],
+    "plan_id": "plan_extract_method"
+  },
+  {
+    "query_id": 82,
+    "user_query": "What problem do the authors define?",
+    "paper_lists": [
+      "JOSIE"
+    ],
+    "plan_id": "plan_extract_problem_def"
+  },
+  {
+    "query_id": 83,
+    "user_query": "What inputs are assumed in the problem definition?",
+    "paper_lists": [
+      "JOSIE"
+    ],
+    "plan_id": "plan_extract_problem_def_input"
+  },
+  {
+    "query_id": 84,
+    "user_query": "What outputs are expected from the solution?",
+    "paper_lists": [
+      "JOSIE"
+    ],
+    "plan_id": "plan_extract_problem_def_output"
+  },
+  {
+    "query_id": 85,
+    "user_query": "What is the ultimate goal in the problem definition?",
+    "paper_lists": [
+      "JOSIE"
+    ],
+    "plan_id": "plan_extract_problem_def_goal"
+  },
+  {
+    "query_id": 86,
+    "user_query": "Among the datasets used in this paper, which ones stand out and how would you rank them?",
+    "paper_lists": [
+      "JOSIE"
+    ],
+    "plan_id": "plan_rank_datasets"
+  },
+  {
+    "query_id": 87,
+    "user_query": "The paper proposes variants—how do these variants compare or rank?",
+    "paper_lists": [
+      "JOSIE"
+    ],
+    "plan_id": "plan_rank_variants"
+  },
+  {
+    "query_id": 88,
+    "user_query": "How do different parameter choices affect the results in this paper?",
+    "paper_lists": [
+      "JOSIE"
+    ],
+    "plan_id": "plan_summarize_parameter_impact"
+  },
+  {
+    "query_id": 89,
+    "user_query": "Are there inconsistencies or contradictions in the reported metrics within this paper?",
+    "paper_lists": [
+      "JOSIE"
+    ],
+    "plan_id": "plan_check_inconsistencies_metrics"
+  },
+  {
+    "query_id": 90,
+    "user_query": "How does this paper actually show that its contributions are valid, and what reasons do the authors give for broader impact?",
+    "paper_lists": [
+      "LSH"
+    ],
+    "plan_id": "plan_general_question_single"
+  },
+  {
+    "query_id": 91,
+    "user_query": "What experiment settings did this paper use?",
+    "paper_lists": [
+      "LSH"
+    ],
+    "plan_id": "plan_extract_experimental_settings"
+  },
+  {
+    "query_id": 92,
+    "user_query": "How did the authors set up their experiments in this paper?",
+    "paper_lists": [
+      "LSH"
+    ],
+    "plan_id": "plan_extract_experimental_setup"
+  },
+  {
+    "query_id": 93,
+    "user_query": "Which baselines did the paper compare against?",
+    "paper_lists": [
+      "LSH"
+    ],
+    "plan_id": "plan_extract_experimental_baselines"
+  },
+  {
+    "query_id": 94,
+    "user_query": "What datasets did the paper use for evaluation?",
+    "paper_lists": [
+      "LSH"
+    ],
+    "plan_id": "plan_extract_experimental_datasets"
+  },
+  {
+    "query_id": 95,
+    "user_query": "What metrics did the authors rely on to evaluate their method?",
+    "paper_lists": [
+      "LSH"
+    ],
+    "plan_id": "plan_extract_experimental_metrics"
+  },
+  {
+    "query_id": 96,
+    "user_query": "Did the paper include ablations? If so, what did they show?",
+    "paper_lists": [
+      "LSH"
+    ],
+    "plan_id": "plan_extract_ablation_study"
+  },
+  {
+    "query_id": 97,
+    "user_query": "What kinds of parameter studies are reported in this paper?",
+    "paper_lists": [
+      "LSH"
+    ],
+    "plan_id": "plan_extract_parameter_study"
+  },
+  {
+    "query_id": 98,
+    "user_query": "How does the proposed method perform compared with the baselines?",
+    "paper_lists": [
+      "LSH"
+    ],
+    "plan_id": "plan_extract_comp_baselines"
+  },
+  {
+    "query_id": 99,
+    "user_query": "What method is proposed in this paper?",
+    "paper_lists": [
+      "LSH"
+    ],
+    "plan_id": "plan_extract_method"
+  },
+  {
+    "query_id": 100,
+    "user_query": "What problem do the authors define?",
+    "paper_lists": [
+      "LSH"
+    ],
+    "plan_id": "plan_extract_problem_def"
+  },
+  {
+    "query_id": 101,
+    "user_query": "What inputs are assumed in the problem definition?",
+    "paper_lists": [
+      "LSH"
+    ],
+    "plan_id": "plan_extract_problem_def_input"
+  },
+  {
+    "query_id": 102,
+    "user_query": "What outputs are expected from the solution?",
+    "paper_lists": [
+      "LSH"
+    ],
+    "plan_id": "plan_extract_problem_def_output"
+  },
+  {
+    "query_id": 103,
+    "user_query": "What is the ultimate goal in the problem definition?",
+    "paper_lists": [
+      "LSH"
+    ],
+    "plan_id": "plan_extract_problem_def_goal"
+  },
+  {
+    "query_id": 104,
+    "user_query": "Among the datasets used in this paper, which ones stand out and how would you rank them?",
+    "paper_lists": [
+      "LSH"
+    ],
+    "plan_id": "plan_rank_datasets"
+  },
+  {
+    "query_id": 105,
+    "user_query": "The paper proposes variants—how do these variants compare or rank?",
+    "paper_lists": [
+      "LSH"
+    ],
+    "plan_id": "plan_rank_variants"
+  },
+  {
+    "query_id": 106,
+    "user_query": "How do different parameter choices affect the results in this paper?",
+    "paper_lists": [
+      "LSH"
+    ],
+    "plan_id": "plan_summarize_parameter_impact"
+  },
+  {
+    "query_id": 107,
+    "user_query": "Are there inconsistencies or contradictions in the reported metrics within this paper?",
+    "paper_lists": [
+      "LSH"
+    ],
+    "plan_id": "plan_check_inconsistencies_metrics"
+  },
+  {
+    "query_id": 108,
+    "user_query": "How does this paper actually show that its contributions are valid, and what reasons do the authors give for broader impact?",
+    "paper_lists": [
+      "PEXESO"
+    ],
+    "plan_id": "plan_general_question_single"
+  },
+  {
+    "query_id": 109,
+    "user_query": "What experiment settings did this paper use?",
+    "paper_lists": [
+      "PEXESO"
+    ],
+    "plan_id": "plan_extract_experimental_settings"
+  },
+  {
+    "query_id": 110,
+    "user_query": "How did the authors set up their experiments in this paper?",
+    "paper_lists": [
+      "PEXESO"
+    ],
+    "plan_id": "plan_extract_experimental_setup"
+  },
+  {
+    "query_id": 111,
+    "user_query": "Which baselines did the paper compare against?",
+    "paper_lists": [
+      "PEXESO"
+    ],
+    "plan_id": "plan_extract_experimental_baselines"
+  },
+  {
+    "query_id": 112,
+    "user_query": "What datasets did the paper use for evaluation?",
+    "paper_lists": [
+      "PEXESO"
+    ],
+    "plan_id": "plan_extract_experimental_datasets"
+  },
+  {
+    "query_id": 113,
+    "user_query": "What metrics did the authors rely on to evaluate their method?",
+    "paper_lists": [
+      "PEXESO"
+    ],
+    "plan_id": "plan_extract_experimental_metrics"
+  },
+  {
+    "query_id": 114,
+    "user_query": "Did the paper include ablations? If so, what did they show?",
+    "paper_lists": [
+      "PEXESO"
+    ],
+    "plan_id": "plan_extract_ablation_study"
+  },
+  {
+    "query_id": 115,
+    "user_query": "What kinds of parameter studies are reported in this paper?",
+    "paper_lists": [
+      "PEXESO"
+    ],
+    "plan_id": "plan_extract_parameter_study"
+  },
+  {
+    "query_id": 116,
+    "user_query": "How does the proposed method perform compared with the baselines?",
+    "paper_lists": [
+      "PEXESO"
+    ],
+    "plan_id": "plan_extract_comp_baselines"
+  },
+  {
+    "query_id": 117,
+    "user_query": "What method is proposed in this paper?",
+    "paper_lists": [
+      "PEXESO"
+    ],
+    "plan_id": "plan_extract_method"
+  },
+  {
+    "query_id": 118,
+    "user_query": "What problem do the authors define?",
+    "paper_lists": [
+      "PEXESO"
+    ],
+    "plan_id": "plan_extract_problem_def"
+  },
+  {
+    "query_id": 119,
+    "user_query": "What inputs are assumed in the problem definition?",
+    "paper_lists": [
+      "PEXESO"
+    ],
+    "plan_id": "plan_extract_problem_def_input"
+  },
+  {
+    "query_id": 120,
+    "user_query": "What outputs are expected from the solution?",
+    "paper_lists": [
+      "PEXESO"
+    ],
+    "plan_id": "plan_extract_problem_def_output"
+  },
+  {
+    "query_id": 121,
+    "user_query": "What is the ultimate goal in the problem definition?",
+    "paper_lists": [
+      "PEXESO"
+    ],
+    "plan_id": "plan_extract_problem_def_goal"
+  },
+  {
+    "query_id": 122,
+    "user_query": "Among the datasets used in this paper, which ones stand out and how would you rank them?",
+    "paper_lists": [
+      "PEXESO"
+    ],
+    "plan_id": "plan_rank_datasets"
+  },
+  {
+    "query_id": 123,
+    "user_query": "The paper proposes variants—how do these variants compare or rank?",
+    "paper_lists": [
+      "PEXESO"
+    ],
+    "plan_id": "plan_rank_variants"
+  },
+  {
+    "query_id": 124,
+    "user_query": "How do different parameter choices affect the results in this paper?",
+    "paper_lists": [
+      "PEXESO"
+    ],
+    "plan_id": "plan_summarize_parameter_impact"
+  },
+  {
+    "query_id": 125,
+    "user_query": "Are there inconsistencies or contradictions in the reported metrics within this paper?",
+    "paper_lists": [
+      "PEXESO"
+    ],
+    "plan_id": "plan_check_inconsistencies_metrics"
+  },
+  {
+    "query_id": 126,
+    "user_query": "How does this paper actually show that its contributions are valid, and what reasons do the authors give for broader impact?",
+    "paper_lists": [
+      "SANTOS"
+    ],
+    "plan_id": "plan_general_question_single"
+  },
+  {
+    "query_id": 127,
+    "user_query": "What experiment settings did this paper use?",
+    "paper_lists": [
+      "SANTOS"
+    ],
+    "plan_id": "plan_extract_experimental_settings"
+  },
+  {
+    "query_id": 128,
+    "user_query": "How did the authors set up their experiments in this paper?",
+    "paper_lists": [
+      "SANTOS"
+    ],
+    "plan_id": "plan_extract_experimental_setup"
+  },
+  {
+    "query_id": 129,
+    "user_query": "Which baselines did the paper compare against?",
+    "paper_lists": [
+      "SANTOS"
+    ],
+    "plan_id": "plan_extract_experimental_baselines"
+  },
+  {
+    "query_id": 130,
+    "user_query": "What datasets did the paper use for evaluation?",
+    "paper_lists": [
+      "SANTOS"
+    ],
+    "plan_id": "plan_extract_experimental_datasets"
+  },
+  {
+    "query_id": 131,
+    "user_query": "What metrics did the authors rely on to evaluate their method?",
+    "paper_lists": [
+      "SANTOS"
+    ],
+    "plan_id": "plan_extract_experimental_metrics"
+  },
+  {
+    "query_id": 132,
+    "user_query": "Did the paper include ablations? If so, what did they show?",
+    "paper_lists": [
+      "SANTOS"
+    ],
+    "plan_id": "plan_extract_ablation_study"
+  },
+  {
+    "query_id": 133,
+    "user_query": "What kinds of parameter studies are reported in this paper?",
+    "paper_lists": [
+      "SANTOS"
+    ],
+    "plan_id": "plan_extract_parameter_study"
+  },
+  {
+    "query_id": 134,
+    "user_query": "How does the proposed method perform compared with the baselines?",
+    "paper_lists": [
+      "SANTOS"
+    ],
+    "plan_id": "plan_extract_comp_baselines"
+  },
+  {
+    "query_id": 135,
+    "user_query": "What method is proposed in this paper?",
+    "paper_lists": [
+      "SANTOS"
+    ],
+    "plan_id": "plan_extract_method"
+  },
+  {
+    "query_id": 136,
+    "user_query": "What problem do the authors define?",
+    "paper_lists": [
+      "SANTOS"
+    ],
+    "plan_id": "plan_extract_problem_def"
+  },
+  {
+    "query_id": 137,
+    "user_query": "What inputs are assumed in the problem definition?",
+    "paper_lists": [
+      "SANTOS"
+    ],
+    "plan_id": "plan_extract_problem_def_input"
+  },
+  {
+    "query_id": 138,
+    "user_query": "What outputs are expected from the solution?",
+    "paper_lists": [
+      "SANTOS"
+    ],
+    "plan_id": "plan_extract_problem_def_output"
+  },
+  {
+    "query_id": 139,
+    "user_query": "What is the ultimate goal in the problem definition?",
+    "paper_lists": [
+      "SANTOS"
+    ],
+    "plan_id": "plan_extract_problem_def_goal"
+  },
+  {
+    "query_id": 140,
+    "user_query": "Among the datasets used in this paper, which ones stand out and how would you rank them?",
+    "paper_lists": [
+      "SANTOS"
+    ],
+    "plan_id": "plan_rank_datasets"
+  },
+  {
+    "query_id": 141,
+    "user_query": "The paper proposes variants—how do these variants compare or rank?",
+    "paper_lists": [
+      "SANTOS"
+    ],
+    "plan_id": "plan_rank_variants"
+  },
+  {
+    "query_id": 142,
+    "user_query": "How do different parameter choices affect the results in this paper?",
+    "paper_lists": [
+      "SANTOS"
+    ],
+    "plan_id": "plan_summarize_parameter_impact"
+  },
+  {
+    "query_id": 143,
+    "user_query": "Are there inconsistencies or contradictions in the reported metrics within this paper?",
+    "paper_lists": [
+      "SANTOS"
+    ],
+    "plan_id": "plan_check_inconsistencies_metrics"
+  },
+  {
+    "query_id": 144,
+    "user_query": "How does this paper actually show that its contributions are valid, and what reasons do the authors give for broader impact?",
+    "paper_lists": [
+      "Starmie"
+    ],
+    "plan_id": "plan_general_question_single"
+  },
+  {
+    "query_id": 145,
+    "user_query": "What experiment settings did this paper use?",
+    "paper_lists": [
+      "Starmie"
+    ],
+    "plan_id": "plan_extract_experimental_settings"
+  },
+  {
+    "query_id": 146,
+    "user_query": "How did the authors set up their experiments in this paper?",
+    "paper_lists": [
+      "Starmie"
+    ],
+    "plan_id": "plan_extract_experimental_setup"
+  },
+  {
+    "query_id": 147,
+    "user_query": "Which baselines did the paper compare against?",
+    "paper_lists": [
+      "Starmie"
+    ],
+    "plan_id": "plan_extract_experimental_baselines"
+  },
+  {
+    "query_id": 148,
+    "user_query": "What datasets did the paper use for evaluation?",
+    "paper_lists": [
+      "Starmie"
+    ],
+    "plan_id": "plan_extract_experimental_datasets"
+  },
+  {
+    "query_id": 149,
+    "user_query": "What metrics did the authors rely on to evaluate their method?",
+    "paper_lists": [
+      "Starmie"
+    ],
+    "plan_id": "plan_extract_experimental_metrics"
+  },
+  {
+    "query_id": 150,
+    "user_query": "Did the paper include ablations? If so, what did they show?",
+    "paper_lists": [
+      "Starmie"
+    ],
+    "plan_id": "plan_extract_ablation_study"
+  },
+  {
+    "query_id": 151,
+    "user_query": "What kinds of parameter studies are reported in this paper?",
+    "paper_lists": [
+      "Starmie"
+    ],
+    "plan_id": "plan_extract_parameter_study"
+  },
+  {
+    "query_id": 152,
+    "user_query": "How does the proposed method perform compared with the baselines?",
+    "paper_lists": [
+      "Starmie"
+    ],
+    "plan_id": "plan_extract_comp_baselines"
+  },
+  {
+    "query_id": 153,
+    "user_query": "What method is proposed in this paper?",
+    "paper_lists": [
+      "Starmie"
+    ],
+    "plan_id": "plan_extract_method"
+  },
+  {
+    "query_id": 154,
+    "user_query": "What problem do the authors define?",
+    "paper_lists": [
+      "Starmie"
+    ],
+    "plan_id": "plan_extract_problem_def"
+  },
+  {
+    "query_id": 155,
+    "user_query": "What inputs are assumed in the problem definition?",
+    "paper_lists": [
+      "Starmie"
+    ],
+    "plan_id": "plan_extract_problem_def_input"
+  },
+  {
+    "query_id": 156,
+    "user_query": "What outputs are expected from the solution?",
+    "paper_lists": [
+      "Starmie"
+    ],
+    "plan_id": "plan_extract_problem_def_output"
+  },
+  {
+    "query_id": 157,
+    "user_query": "What is the ultimate goal in the problem definition?",
+    "paper_lists": [
+      "Starmie"
+    ],
+    "plan_id": "plan_extract_problem_def_goal"
+  },
+  {
+    "query_id": 158,
+    "user_query": "Among the datasets used in this paper, which ones stand out and how would you rank them?",
+    "paper_lists": [
+      "Starmie"
+    ],
+    "plan_id": "plan_rank_datasets"
+  },
+  {
+    "query_id": 159,
+    "user_query": "The paper proposes variants—how do these variants compare or rank?",
+    "paper_lists": [
+      "Starmie"
+    ],
+    "plan_id": "plan_rank_variants"
+  },
+  {
+    "query_id": 160,
+    "user_query": "How do different parameter choices affect the results in this paper?",
+    "paper_lists": [
+      "Starmie"
+    ],
+    "plan_id": "plan_summarize_parameter_impact"
+  },
+  {
+    "query_id": 161,
+    "user_query": "Are there inconsistencies or contradictions in the reported metrics within this paper?",
+    "paper_lists": [
+      "Starmie"
+    ],
+    "plan_id": "plan_check_inconsistencies_metrics"
+  },
+  {
+    "query_id": 162,
+    "user_query": "How does this paper actually show that its contributions are valid, and what reasons do the authors give for broader impact?",
+    "paper_lists": [
+      "TUS"
+    ],
+    "plan_id": "plan_general_question_single"
+  },
+  {
+    "query_id": 163,
+    "user_query": "What experiment settings did this paper use?",
+    "paper_lists": [
+      "TUS"
+    ],
+    "plan_id": "plan_extract_experimental_settings"
+  },
+  {
+    "query_id": 164,
+    "user_query": "How did the authors set up their experiments in this paper?",
+    "paper_lists": [
+      "TUS"
+    ],
+    "plan_id": "plan_extract_experimental_setup"
+  },
+  {
+    "query_id": 165,
+    "user_query": "Which baselines did the paper compare against?",
+    "paper_lists": [
+      "TUS"
+    ],
+    "plan_id": "plan_extract_experimental_baselines"
+  },
+  {
+    "query_id": 166,
+    "user_query": "What datasets did the paper use for evaluation?",
+    "paper_lists": [
+      "TUS"
+    ],
+    "plan_id": "plan_extract_experimental_datasets"
+  },
+  {
+    "query_id": 167,
+    "user_query": "What metrics did the authors rely on to evaluate their method?",
+    "paper_lists": [
+      "TUS"
+    ],
+    "plan_id": "plan_extract_experimental_metrics"
+  },
+  {
+    "query_id": 168,
+    "user_query": "Did the paper include ablations? If so, what did they show?",
+    "paper_lists": [
+      "TUS"
+    ],
+    "plan_id": "plan_extract_ablation_study"
+  },
+  {
+    "query_id": 169,
+    "user_query": "What kinds of parameter studies are reported in this paper?",
+    "paper_lists": [
+      "TUS"
+    ],
+    "plan_id": "plan_extract_parameter_study"
+  },
+  {
+    "query_id": 170,
+    "user_query": "How does the proposed method perform compared with the baselines?",
+    "paper_lists": [
+      "TUS"
+    ],
+    "plan_id": "plan_extract_comp_baselines"
+  },
+  {
+    "query_id": 171,
+    "user_query": "What method is proposed in this paper?",
+    "paper_lists": [
+      "TUS"
+    ],
+    "plan_id": "plan_extract_method"
+  },
+  {
+    "query_id": 172,
+    "user_query": "What problem do the authors define?",
+    "paper_lists": [
+      "TUS"
+    ],
+    "plan_id": "plan_extract_problem_def"
+  },
+  {
+    "query_id": 173,
+    "user_query": "What inputs are assumed in the problem definition?",
+    "paper_lists": [
+      "TUS"
+    ],
+    "plan_id": "plan_extract_problem_def_input"
+  },
+  {
+    "query_id": 174,
+    "user_query": "What outputs are expected from the solution?",
+    "paper_lists": [
+      "TUS"
+    ],
+    "plan_id": "plan_extract_problem_def_output"
+  },
+  {
+    "query_id": 175,
+    "user_query": "What is the ultimate goal in the problem definition?",
+    "paper_lists": [
+      "TUS"
+    ],
+    "plan_id": "plan_extract_problem_def_goal"
+  },
+  {
+    "query_id": 176,
+    "user_query": "Among the datasets used in this paper, which ones stand out and how would you rank them?",
+    "paper_lists": [
+      "TUS"
+    ],
+    "plan_id": "plan_rank_datasets"
+  },
+  {
+    "query_id": 177,
+    "user_query": "The paper proposes variants—how do these variants compare or rank?",
+    "paper_lists": [
+      "TUS"
+    ],
+    "plan_id": "plan_rank_variants"
+  },
+  {
+    "query_id": 178,
+    "user_query": "How do different parameter choices affect the results in this paper?",
+    "paper_lists": [
+      "TUS"
+    ],
+    "plan_id": "plan_summarize_parameter_impact"
+  },
+  {
+    "query_id": 179,
+    "user_query": "Are there inconsistencies or contradictions in the reported metrics within this paper?",
+    "paper_lists": [
+      "TUS"
+    ],
+    "plan_id": "plan_check_inconsistencies_metrics"
+  },
+  {
+    "user_query": "Within this group of papers, how do their performances compare?",
+    "paper_lists": [
+      "AURUM",
+      "D3L",
+      "BLEND"
+    ],
+    "plan_id": "plan_rank_exp_results_cross_papers",
+    "query_id": 180
+  },
+  {
+    "user_query": "Do these papers share any common experiment settings?",
+    "paper_lists": [
+      "AURUM",
+      "D3L",
+      "BLEND"
+    ],
+    "plan_id": "plan_summarize_common_settings",
+    "query_id": 181
+  },
+  {
+    "user_query": "What are the strengths and weaknesses of the methods in this group?",
+    "paper_lists": [
+      "AURUM",
+      "D3L",
+      "BLEND"
+    ],
+    "plan_id": "plan_summarize_methods_pros_cons",
+    "query_id": 182
+  },
+  {
+    "user_query": "Is there anything missing or under-reported in their experiment setups?",
+    "paper_lists": [
+      "AURUM",
+      "D3L",
+      "BLEND"
+    ],
+    "plan_id": "plan_summarize_missing_settings",
+    "query_id": 183
+  },
+  {
+    "user_query": "How do the problem definitions differ across these papers?",
+    "paper_lists": [
+      "AURUM",
+      "D3L",
+      "BLEND"
+    ],
+    "plan_id": "plan_summarize_problem_def_diff",
+    "query_id": 184
+  },
+  {
+    "user_query": "Do the results reported by these papers line up consistently, or are there conflicts?",
+    "paper_lists": [
+      "AURUM",
+      "D3L",
+      "BLEND"
+    ],
+    "plan_id": "plan_check_inconsistencies_cross_papers",
+    "query_id": 185
+  },
+  {
+    "user_query": "Within this set of papers, how do their performances compare?",
+    "paper_lists": [
+      "DeepJoin",
+      "JOSIE",
+      "LSH",
+      "PEXESO"
+    ],
+    "plan_id": "plan_rank_exp_results_cross_papers",
+    "query_id": 186
+  },
+  {
+    "user_query": "What experiment settings are common across these papers?",
+    "paper_lists": [
+      "DeepJoin",
+      "JOSIE",
+      "LSH",
+      "PEXESO"
+    ],
+    "plan_id": "plan_summarize_common_settings",
+    "query_id": 187
+  },
+  {
+    "user_query": "What pros and cons do the methods in this group have?",
+    "paper_lists": [
+      "DeepJoin",
+      "JOSIE",
+      "LSH",
+      "PEXESO"
+    ],
+    "plan_id": "plan_summarize_methods_pros_cons",
+    "query_id": 188
+  },
+  {
+    "user_query": "Is there anything missing in how these papers describe their experiments?",
+    "paper_lists": [
+      "DeepJoin",
+      "JOSIE",
+      "LSH",
+      "PEXESO"
+    ],
+    "plan_id": "plan_summarize_missing_settings",
+    "query_id": 189
+  },
+  {
+    "user_query": "How do these papers define their problems differently?",
+    "paper_lists": [
+      "DeepJoin",
+      "JOSIE",
+      "LSH",
+      "PEXESO"
+    ],
+    "plan_id": "plan_summarize_problem_def_diff",
+    "query_id": 190
+  },
+  {
+    "user_query": "Do the experimental results across these papers agree, or are there inconsistencies?",
+    "paper_lists": [
+      "DeepJoin",
+      "JOSIE",
+      "LSH",
+      "PEXESO"
+    ],
+    "plan_id": "plan_check_inconsistencies_cross_papers",
+    "query_id": 191
+  },
+  {
+    "user_query": "Looking at this group, how do the methods perform compared to each other?",
+    "paper_lists": [
+      "SANTOS",
+      "Starmie",
+      "TUS"
+    ],
+    "plan_id": "plan_rank_exp_results_cross_papers",
+    "query_id": 192
+  },
+  {
+    "user_query": "Do these papers have any common experiment settings?",
+    "paper_lists": [
+      "SANTOS",
+      "Starmie",
+      "TUS"
+    ],
+    "plan_id": "plan_summarize_common_settings",
+    "query_id": 193
+  },
+  {
+    "user_query": "What are the main pros and cons of the methods in this set?",
+    "paper_lists": [
+      "SANTOS",
+      "Starmie",
+      "TUS"
+    ],
+    "plan_id": "plan_summarize_methods_pros_cons",
+    "query_id": 194
+  },
+  {
+    "user_query": "Are there gaps or missing details in their experiment setups?",
+    "paper_lists": [
+      "SANTOS",
+      "Starmie",
+      "TUS"
+    ],
+    "plan_id": "plan_summarize_missing_settings",
+    "query_id": 195
+  },
+  {
+    "user_query": "How do the problem definitions vary across these three papers?",
+    "paper_lists": [
+      "SANTOS",
+      "Starmie",
+      "TUS"
+    ],
+    "plan_id": "plan_summarize_problem_def_diff",
+    "query_id": 196
+  },
+  {
+    "user_query": "Do the results from these papers tell a consistent story, or are there contradictions?",
+    "paper_lists": [
+      "SANTOS",
+      "Starmie",
+      "TUS"
+    ],
+    "plan_id": "plan_check_inconsistencies_cross_papers",
+    "query_id": 197
+  },
+  {
+    "user_query": "If we compare these three papers, how do their performances stack up?",
+    "paper_lists": [
+      "AURUM",
+      "DeepJoin",
+      "SANTOS"
+    ],
+    "plan_id": "plan_rank_exp_results_cross_papers",
+    "query_id": 198
+  },
+  {
+    "user_query": "Across these three papers, what experiment settings do they have in common?",
+    "paper_lists": [
+      "D3L",
+      "LSH",
+      "Starmie"
+    ],
+    "plan_id": "plan_summarize_common_settings",
+    "query_id": 199
+  },
+  {
+    "user_query": "What are the strengths and weaknesses of the methods in these three papers?",
+    "paper_lists": [
+      "BLEND",
+      "PEXESO",
+      "TUS"
+    ],
+    "plan_id": "plan_summarize_methods_pros_cons",
+    "query_id": 200
+  },
+  {
+    "user_query": "How do the problem definitions compare across these three?",
+    "paper_lists": [
+      "AURUM",
+      "JOSIE",
+      "Starmie"
+    ],
+    "plan_id": "plan_summarize_problem_def_diff",
+    "query_id": 201
+  },
+  {
+    "user_query": "Do the results across these three papers agree, or are there inconsistencies?",
+    "paper_lists": [
+      "D3L",
+      "DeepJoin",
+      "TUS"
+    ],
+    "plan_id": "plan_check_inconsistencies_cross_papers",
+    "query_id": 202
+  },
+  {
+    "user_query": "Looking at these five papers, how do their results compare?",
+    "paper_lists": [
+      "AURUM",
+      "D3L",
+      "DeepJoin",
+      "LSH",
+      "Starmie"
+    ],
+    "plan_id": "plan_rank_exp_results_cross_papers",
+    "query_id": 203
+  },
+  {
+    "user_query": "Do these five papers share experiment settings?",
+    "paper_lists": [
+      "D3L",
+      "BLEND",
+      "JOSIE",
+      "PEXESO",
+      "TUS"
+    ],
+    "plan_id": "plan_summarize_common_settings",
+    "query_id": 204
+  },
+  {
+    "user_query": "What pros and cons can we see across these five methods?",
+    "paper_lists": [
+      "AURUM",
+      "BLEND",
+      "DeepJoin",
+      "LSH",
+      "SANTOS"
+    ],
+    "plan_id": "plan_summarize_methods_pros_cons",
+    "query_id": 205
+  },
+  {
+    "user_query": "What experiment details seem missing across these five papers?",
+    "paper_lists": [
+      "AURUM",
+      "D3L",
+      "JOSIE",
+      "PEXESO",
+      "TUS"
+    ],
+    "plan_id": "plan_summarize_missing_settings",
+    "query_id": 206
+  },
+  {
+    "user_query": "How do the problem definitions differ across these five?",
+    "paper_lists": [
+      "BLEND",
+      "DeepJoin",
+      "LSH",
+      "PEXESO",
+      "Starmie"
+    ],
+    "plan_id": "plan_summarize_problem_def_diff",
+    "query_id": 207
+  },
+  {
+    "user_query": "Do the results reported by these five papers line up consistently?",
+    "paper_lists": [
+      "AURUM",
+      "D3L",
+      "DeepJoin",
+      "JOSIE",
+      "SANTOS"
+    ],
+    "plan_id": "plan_check_inconsistencies_cross_papers",
+    "query_id": 208
+  },
+  {
+    "user_query": "How do these seven papers compare in terms of performance?",
+    "paper_lists": [
+      "AURUM",
+      "D3L",
+      "BLEND",
+      "DeepJoin",
+      "JOSIE",
+      "LSH",
+      "SANTOS"
+    ],
+    "plan_id": "plan_rank_exp_results_cross_papers",
+    "query_id": 209
+  },
+  {
+    "user_query": "Do these seven papers share any experiment settings?",
+    "paper_lists": [
+      "AURUM",
+      "D3L",
+      "BLEND",
+      "DeepJoin",
+      "LSH",
+      "PEXESO",
+      "TUS"
+    ],
+    "plan_id": "plan_summarize_common_settings",
+    "query_id": 210
+  },
+  {
+    "user_query": "What are the pros and cons of the methods across these seven papers?",
+    "paper_lists": [
+      "AURUM",
+      "D3L",
+      "BLEND",
+      "DeepJoin",
+      "JOSIE",
+      "PEXESO",
+      "Starmie"
+    ],
+    "plan_id": "plan_summarize_methods_pros_cons",
+    "query_id": 211
+  },
+  {
+    "user_query": "What experiment information seems to be missing across these seven?",
+    "paper_lists": [
+      "AURUM",
+      "D3L",
+      "BLEND",
+      "JOSIE",
+      "LSH",
+      "PEXESO",
+      "TUS"
+    ],
+    "plan_id": "plan_summarize_missing_settings",
+    "query_id": 212
+  },
+  {
+    "user_query": "How do the problem definitions differ across these seven papers?",
+    "paper_lists": [
+      "AURUM",
+      "D3L",
+      "BLEND",
+      "DeepJoin",
+      "JOSIE",
+      "LSH",
+      "Starmie"
+    ],
+    "plan_id": "plan_summarize_problem_def_diff",
+    "query_id": 213
+  },
+  {
+    "user_query": "Are the reported results consistent across these seven papers?",
+    "paper_lists": [
+      "AURUM",
+      "D3L",
+      "BLEND",
+      "DeepJoin",
+      "LSH",
+      "PEXESO",
+      "SANTOS"
+    ],
+    "plan_id": "plan_check_inconsistencies_cross_papers",
+    "query_id": 214
+  },
+  {
+    "user_query": "When we compare all ten papers, how does their performance rank overall?",
+    "paper_lists": [
+      "AURUM",
+      "D3L",
+      "BLEND",
+      "DeepJoin",
+      "JOSIE",
+      "LSH",
+      "PEXESO",
+      "SANTOS",
+      "Starmie",
+      "TUS"
+    ],
+    "plan_id": "plan_rank_exp_results_cross_papers",
+    "query_id": 215
+  },
+  {
+    "user_query": "Looking across all ten, do they share common experiment settings?",
+    "paper_lists": [
+      "AURUM",
+      "D3L",
+      "BLEND",
+      "DeepJoin",
+      "JOSIE",
+      "LSH",
+      "PEXESO",
+      "SANTOS",
+      "Starmie",
+      "TUS"
+    ],
+    "plan_id": "plan_summarize_common_settings",
+    "query_id": 216
+  },
+  {
+    "user_query": "Across all ten, what are the main strengths and weaknesses of the methods?",
+    "paper_lists": [
+      "AURUM",
+      "D3L",
+      "BLEND",
+      "DeepJoin",
+      "JOSIE",
+      "LSH",
+      "PEXESO",
+      "SANTOS",
+      "Starmie",
+      "TUS"
+    ],
+    "plan_id": "plan_summarize_methods_pros_cons",
+    "query_id": 217
+  },
+  {
+    "user_query": "Across all ten, what experiment details tend to be missing or unclear?",
+    "paper_lists": [
+      "AURUM",
+      "D3L",
+      "BLEND",
+      "DeepJoin",
+      "JOSIE",
+      "LSH",
+      "PEXESO",
+      "SANTOS",
+      "Starmie",
+      "TUS"
+    ],
+    "plan_id": "plan_summarize_missing_settings",
+    "query_id": 218
+  },
+  {
+    "user_query": "How do the problem definitions compare across all ten papers?",
+    "paper_lists": [
+      "AURUM",
+      "D3L",
+      "BLEND",
+      "DeepJoin",
+      "JOSIE",
+      "LSH",
+      "PEXESO",
+      "SANTOS",
+      "Starmie",
+      "TUS"
+    ],
+    "plan_id": "plan_summarize_problem_def_diff",
+    "query_id": 219
+  },
+  {
+    "user_query": "Looking across all approaches, what trade-offs do the authors point out between efficiency and predictive accuracy?",
+    "paper_lists": [
+      "AURUM",
+      "D3L",
+      "BLEND",
+      "DeepJoin",
+      "JOSIE",
+      "LSH",
+      "PEXESO",
+      "SANTOS",
+      "Starmie",
+      "TUS"
+    ],
+    "plan_id": "plan_general_question_single",
+    "query_id": 220
+  },
+  {
+    "user_query": "Across all these studies, what limitations do they acknowledge (or imply), and what does that reveal about unresolved challenges?",
+    "paper_lists": [
+      "AURUM",
+      "D3L",
+      "BLEND",
+      "DeepJoin",
+      "JOSIE",
+      "LSH",
+      "PEXESO",
+      "SANTOS",
+      "Starmie",
+      "TUS"
+    ],
+    "plan_id": "plan_general_question_single",
+    "query_id": 221
+  }
+]
